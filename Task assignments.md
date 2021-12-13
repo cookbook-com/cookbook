@@ -43,6 +43,8 @@
 		- logout user
 		- check login status
 		- rename cookbook - should go with cookbook module
+		- Recipe object (For us to store how many likes a recipe has. Should have ID that matches the ID in the mealdb api, as well as a number for keep track of number of likes it has)
+		- Review object (Object for storing reviews of recipes. Should have an ID, a foreign key that links to a recipe ID, as well as a string that contains the actual review)
 		- add recipe to user cookbook(add recipe Id to user's cookbook 1,2, or 3)
 		- like recipe (add +1 like to recipe, add recipe id to user's liked recipes)
 		

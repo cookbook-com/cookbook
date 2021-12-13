@@ -34,8 +34,7 @@
 	* Frontend
 		- Cookbook module (should go with cookbook detailed component) -mostly angular, some backend
 		- Recipe module (should go with recipe detailed component) -some angular, some backend
-		- Welcome module (should go with recipe summary component) -mostly angular
-		
+		- Welcome module (should go with recipe summary component) -mostly angular	
 		- Recipe summary component
 		- Recipe detailed component
 		- Cookbook detailed component

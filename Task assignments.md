@@ -27,7 +27,12 @@
 	- Navbar component
 
 ## Willie
-
+	* Frontend
+		- Welcome module (should go with recipe summary component) -mostly angular	
+		- Recipe summary component
+	* Backend
+		- logout user
+		- check login status
 
 
 
@@ -35,14 +40,10 @@
 	* Frontend
 		- Cookbook module (should go with cookbook detailed component) -mostly angular, some backend
 		- Recipe module (should go with recipe detailed component) -some angular, some backend
-		- Welcome module (should go with recipe summary component) -mostly angular	
-		- Recipe summary component
 		- Recipe detailed component
 		- Cookbook detailed component
 		
 	* Backend
-		- logout user
-		- check login status
 		- rename cookbook - should go with cookbook module
 		- Recipe object (For us to store how many likes a recipe has. Should have ID that matches the ID in the mealdb api, as well as a number for keep track of number of likes it has)
 		- Review object (Object for storing reviews of recipes. Should have an ID, a foreign key that links to a recipe ID, as well as a string that contains the actual review)

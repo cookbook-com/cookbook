@@ -19,6 +19,11 @@
 ## Crystal
 
 ## Rafael
+* Frontend
+	- Profile module (should go with cookbook summary component) -mostly angular
+	- Cookbook summary component
+	- Search results module (should go with navbar component) -mostly angular
+	- Navbar component
 
 ## Willie
 
@@ -27,16 +32,11 @@
 
 ## Not assigned yet
 	* Frontend
-		- Profile module (should go with cookbook summary component) -mostly angular
 		- Cookbook module (should go with cookbook detailed component) -mostly angular, some backend
 		- Recipe module (should go with recipe detailed component) -some angular, some backend
-		- Search results module (should go with navbar component) -mostly angular
-		- Welcome module (should go with recipe summary component) -mostly angular
-		
-		- Navbar component
+		- Welcome module (should go with recipe summary component) -mostly angular	
 		- Recipe summary component
 		- Recipe detailed component
-		- Cookbook summary component
 		- Cookbook detailed component
 		
 	* Backend

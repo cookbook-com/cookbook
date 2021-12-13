@@ -1,6 +1,5 @@
 ## Maurice
 
-## Marshall
 	* Frontend
 		- Login module
 		- Login component
@@ -9,6 +8,8 @@
 		- Create user
 		- User object 
 		- login user
+
+## Marshall
 		
 	* E2E testing
 	* DevOps setup

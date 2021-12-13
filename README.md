@@ -8,6 +8,7 @@ Repo for holding Revature project 2 cookbook application
 	
 * When starting a work session
 	- git pull origin main
+	- If it opens up vim because of a merge conflict, just type ":wq" and press enter and it should work
 	
 * When finishing a work session
 	- git add .

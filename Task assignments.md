@@ -1,26 +1,26 @@
-Maurice
+## Maurice
 
-Marshall
-	Frontend: 
-		Login module
-		Login component
-		Create user component
-	Backend: 
-		Create user
-		User object 
-		login user
+## Marshall
+	* Frontend
+		- Login module
+		- Login component
+		- Create user component
+	* Backend
+		- Create user
+		- User object 
+		- login user
 		
-	E2E testing
-	DevOps setup
-	E2C setup
-	Database setup
+	* E2E testing
+	* DevOps setup
+	* E2C setup
+	* Database setup
 	
 
-Crystal
+## Crystal
 
-Rafael
+## Rafael
 
-Willie
+## Willie
 
 
 

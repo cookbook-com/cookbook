@@ -11,6 +11,8 @@ Repo for holding Revature project 2 cookbook application
 	- If it opens up vim because of a merge conflict, just type ":wq" and press enter and it should work
 	
 * When finishing a work session
+	- git pull origin main
+	- If it opens up vim because of a merge conflict, just type ":wq" and press enter and it should work
 	- git add .
 	- git commit -m "Message summarizing what you did"
 	- git push origin main <= this will actually push it up to the remote repository

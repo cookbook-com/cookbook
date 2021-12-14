@@ -15,3 +15,8 @@ Repo for holding Revature project 2 cookbook application
 	- git commit -m "Message summarizing what you did"
 	- git push origin main <= this will actually push it up to the remote repository
 	
+* AWS RDS (Database) info
+	- URL database-1.cwiwtzs5wenw.us-east-2.rds.amazonaws.com
+	- Username postgres
+	- Password Panzergrenadier!
+	

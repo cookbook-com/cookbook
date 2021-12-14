@@ -16,9 +16,6 @@
 	* E2C setup
 	* Database setup
 	
-
-## Crystal
-
 ## Rafael
 * Frontend
 	- Profile module (should go with cookbook summary component) -mostly angular

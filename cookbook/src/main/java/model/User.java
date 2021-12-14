@@ -17,47 +17,48 @@ public class User {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name = "user_id")
-
 private int id;
+
+@Column(name ="user_name", nullable = false)
+private String username;
+
+@Column(name ="password", nullable = false)
+private String password;
 
 @Column(name = "first_name", nullable = false)
 private String firstName;
 
-@Column(name = "last_name", nullable = false)
+@Column( name = "last_name", nullable = false)
 private String lastName;
 
-@Column(name = "username", nullable = false, length = 40, unique = true)
-private String userName;
-
-@Column(name = "password", nullable = false)
-private String password;
-
-@Column(name = "email", nullable = false, unique = true)
-private String email;
-
-@Column(name = "phone_number", nullable = true)
+@Column(name = "phone_number")
 private String phoneNumber;
 
-@Column(name = "location", nullable = true)
-private String location;
+@Column(name ="email")
+private String email;
 
-@Column(name = "age", nullable = false)
+@Column(name = "age")
 private int age;
 
-public User() {}
+@Column(name = "likedRecipe")
+private int likedRecipe;
 
-public User(int id, String firstName, String lastName, String userName, String password, String email,
-		String phoneNumber, String location, int age) {
+public User() {
+	super();
+}
+
+public User(int id, String username, String password, String firstName, String lastName, String phoneNumber,
+		String email, int age, int likedRecipe) {
 	super();
 	this.id = id;
+	this.username = username;
+	this.password = password;
 	this.firstName = firstName;
 	this.lastName = lastName;
-	this.userName = userName;
-	this.password = password;
-	this.email = email;
 	this.phoneNumber = phoneNumber;
-	this.location = location;
+	this.email = email;
 	this.age = age;
+	this.likedRecipe = likedRecipe;
 }
 
 public int getId() {
@@ -66,6 +67,22 @@ public int getId() {
 
 public void setId(int id) {
 	this.id = id;
+}
+
+public String getUsername() {
+	return username;
+}
+
+public void setUsername(String username) {
+	this.username = username;
+}
+
+public String getPassword() {
+	return password;
+}
+
+public void setPassword(String password) {
+	this.password = password;
 }
 
 public String getFirstName() {
@@ -84,20 +101,12 @@ public void setLastName(String lastName) {
 	this.lastName = lastName;
 }
 
-public String getUserName() {
-	return userName;
+public String getPhoneNumber() {
+	return phoneNumber;
 }
 
-public void setUserName(String userName) {
-	this.userName = userName;
-}
-
-public String getPassword() {
-	return password;
-}
-
-public void setPassword(String password) {
-	this.password = password;
+public void setPhoneNumber(String phoneNumber) {
+	this.phoneNumber = phoneNumber;
 }
 
 public String getEmail() {
@@ -108,22 +117,6 @@ public void setEmail(String email) {
 	this.email = email;
 }
 
-public String getPhoneNumber() {
-	return phoneNumber;
-}
-
-public void setPhoneNumber(String phoneNumber) {
-	this.phoneNumber = phoneNumber;
-}
-
-public String getLocation() {
-	return location;
-}
-
-public void setLocation(String location) {
-	this.location = location;
-}
-
 public int getAge() {
 	return age;
 }
@@ -132,9 +125,17 @@ public void setAge(int age) {
 	this.age = age;
 }
 
+public int getLikedRecipe() {
+	return likedRecipe;
+}
+
+public void setLikedRecipe(int likedRecipe) {
+	this.likedRecipe = likedRecipe;
+}
+
 @Override
 public int hashCode() {
-	return Objects.hash(age, email, firstName, id, lastName, location, password, phoneNumber, userName);
+	return Objects.hash(age, email, firstName, id, lastName, likedRecipe, password, phoneNumber, username);
 }
 
 @Override
@@ -147,18 +148,17 @@ public boolean equals(Object obj) {
 		return false;
 	User other = (User) obj;
 	return age == other.age && Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName)
-			&& id == other.id && Objects.equals(lastName, other.lastName) && Objects.equals(location, other.location)
+			&& id == other.id && Objects.equals(lastName, other.lastName) && likedRecipe == other.likedRecipe
 			&& Objects.equals(password, other.password) && Objects.equals(phoneNumber, other.phoneNumber)
-			&& Objects.equals(userName, other.userName);
+			&& Objects.equals(username, other.username);
 }
 
 @Override
 public String toString() {
-	return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
-			+ ", password=" + password + ", email=" + email + ", phoneNumber=" + phoneNumber + ", location=" + location
-			+ ", age=" + age + "]";
+	return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
+			+ ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + ", email=" + email + ", age=" + age
+			+ ", likedRecipe=" + likedRecipe + "]";
 }
-
 
 
 }

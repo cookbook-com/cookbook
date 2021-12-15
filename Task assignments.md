@@ -15,11 +15,11 @@
 	* DevOps setup
 	* E2C setup
 	* Database setup
-	
-	* Done
-		- Database setup
-		- 
-	
+	* Set up angular project skeleton
+	* Set up controller skeleton
+	* Set up integration tests
+
+
 ## Rafael
 * Frontend
 	- Profile module (should go with cookbook summary component) -mostly angular

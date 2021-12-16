@@ -29,7 +29,7 @@ public class LoginComponent {
 		this.driver = driver; 
 		wdw = new WebDriverWait(this.driver, Duration.ofSeconds(2));
 		
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(this.driver, this);
 		
 	}
 	

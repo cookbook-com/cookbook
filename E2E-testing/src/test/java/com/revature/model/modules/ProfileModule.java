@@ -1,11 +1,21 @@
 package com.revature.model.modules;
 
-import com.revature.model.components.CookbookSummaryComponent;
+import org.openqa.selenium.WebDriver;
+
+import com.revature.model.components.CookbookDetailedComponent;
 import com.revature.model.components.NavbarComponent;
 
 public class ProfileModule {
 
-	private NavbarComponent navbar;
-	private CookbookSummaryComponent cookbookSummary; 
+	public NavbarComponent navbar;
+	private CookbookDetailedComponent cookbookDetailed; 
+	
+	
+	public ProfileModule(WebDriver driver) {
+		
+		this.navbar = new NavbarComponent(driver);
+		this.cookbookDetailed = new CookbookDetailedComponent(driver);
+		
+	}
 	
 }

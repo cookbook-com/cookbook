@@ -1,8 +1,12 @@
 package com.revature.model.components;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -48,6 +52,17 @@ public class NavbarComponent {
 	
 	//Need to add other webelements for any links that are under these filter dropdowns
 	
+	public NavbarComponent(WebDriver driver) {
+		
+		this.driver = driver;
+		
+		wdw = new WebDriverWait(this.driver, Duration.ofSeconds(2));
+		
+		PageFactory.initElements(this.driver, this);
+		
+	}
+	
+	
 	public String getSearchText() {
 		
 		return wdw.until(ExpectedConditions.visibilityOf(searchField)).getText();
@@ -56,7 +71,7 @@ public class NavbarComponent {
 	
 	public void clickSearch() {
 		
-		wdw.until(ExpectedConditions.visibilityOf(searchButton)).click();
+		wdw.until(ExpectedConditions.elementToBeClickable(searchButton)).click();
 		
 	}
 	
@@ -66,11 +81,71 @@ public class NavbarComponent {
 		
 	}
 	
-	public void hoverNavigationMenu() {
+	public void hoverNavigationMenu() {		//for hovering over navigation menu dropdown. Need to perform to have access to profile, signout, signin functions
 		
+		Actions action = new Actions(driver);
 		
+		action.moveToElement(navigationMenuDropdown).build().perform();
 		
 	}
+	
+	public void clickProfileLink() {
+		
+		wdw.until(ExpectedConditions.elementToBeClickable(profileLink)).click();
+		
+	}
+	
+	public void clickSigninLink() {
+		
+		wdw.until(ExpectedConditions.elementToBeClickable(signinLink)).click();
+		
+	}
+	
+	public void clickSignoutLink() {
+		
+		wdw.until(ExpectedConditions.elementToBeClickable(signoutLink)).click();
+		
+	}
+	
+	public void hoverFilterMenu() {		//need to hover over this to have access to search filter buttons
+		
+		Actions action = new Actions(driver);
+		
+		action.moveToElement(filterDropdown).build().perform();
+		
+	}
+	
+	public void hoverCategoryDropdown() {
+		
+		Actions action = new Actions(driver);
+		
+		action.moveToElement(categoryDropdown).build().perform();
+		
+	}
+	
+	public void hoverAreaDropdown() {
+		
+		Actions action = new Actions(driver);
+		
+		action.moveToElement(areaDropdown).build().perform();
+		
+	}
+	
+	public void hoverTagsDropdown() {
+		
+		Actions action = new Actions(driver);
+		
+		action.moveToElement(tagsDropdown).build().perform();		
+	}
+	
+	
+	
+	
+	//Going to need to add more actions and webelements as this component develops. As of now, I do not know which specific filter options we will provide
+	
+	
+	
+	
 	
 	
 }

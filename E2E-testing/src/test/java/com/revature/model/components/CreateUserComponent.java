@@ -40,9 +40,9 @@ public class CreateUserComponent {
 	public CreateUserComponent(WebDriver driver) {
 		
 		this.driver = driver; 
-		wdw = new WebDriverWait(driver, Duration.ofSeconds(2));
+		wdw = new WebDriverWait(this.driver, Duration.ofSeconds(2));
 		
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(this.driver, this);
 		
 	}
 	

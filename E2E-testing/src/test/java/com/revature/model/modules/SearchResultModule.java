@@ -1,11 +1,21 @@
 package com.revature.model.modules;
 
+import org.openqa.selenium.WebDriver;
+
 import com.revature.model.components.NavbarComponent;
 import com.revature.model.components.RecipeSummaryComponent;
 
 public class SearchResultModule {
 
-	private NavbarComponent navbar;
-	private RecipeSummaryComponent recipeSummary;
+	public NavbarComponent navbar;
+	public RecipeSummaryComponent recipeSummary;
+	
+	public SearchResultModule(WebDriver driver) {
+		
+		this.navbar = new NavbarComponent(driver);
+		this.recipeSummary = new RecipeSummaryComponent(driver);
+		
+	}
+	
 	
 }

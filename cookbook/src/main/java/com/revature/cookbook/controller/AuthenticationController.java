@@ -1,4 +1,4 @@
-package controller;
+package com.revature.cookbook.controller;
 
 import javax.security.auth.login.LoginException;
 import javax.servlet.http.HttpSession;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import dto.LoginDTO;
-import model.User;
-import service.UserService;
+import com.revature.cookbook.dto.LoginDTO;
+import com.revature.cookbook.model.User;
+import com.revature.cookbook.service.UserService;
 
 @RestController
 public class AuthenticationController {

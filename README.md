@@ -20,5 +20,5 @@ Repo for holding Revature project 2 cookbook application
 * AWS RDS (Database) info
 	- URL database-1.cwiwtzs5wenw.us-east-2.rds.amazonaws.com:5432/postgres
 	- Username postgres
-	- Password panzergrenadier!
+	- Password panzergrenadier! ```Password all lowercase```
 	

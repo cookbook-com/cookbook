@@ -1,4 +1,4 @@
-package Exception;
+package com.revature.cookbook.exception;
 
 public class UserNotFoundException extends Exception {
 

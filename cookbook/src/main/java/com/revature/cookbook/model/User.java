@@ -1,4 +1,4 @@
-package model;
+package com.revature.cookbook.model;
 
 import java.util.Objects;
 

@@ -1,12 +1,14 @@
-package service;
+package com.revature.cookbook.service;
 
 import org.springframework.stereotype.Service;
+
+import com.revature.cookbook.dao.UserDao;
+import com.revature.cookbook.model.User;
+
 import javax.security.auth.login.LoginException;
 
 
-import Exception.UserNotFoundException;
-import dao.UserDao;
-import model.User;
+import com.revature.cookbook.exception.*;
 
 import java.util.List;
 

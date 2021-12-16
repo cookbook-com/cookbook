@@ -10,7 +10,10 @@
 		- login user
 
 ## Marshall
-		
+	* Frontend
+		- Recipe module (should go with recipe detailed component) -some angular, some backend
+		- Recipe detailed component
+	
 	* E2E testing
 	* DevOps setup
 	* E2C setup
@@ -40,8 +43,6 @@
 ## Not assigned yet
 	* Frontend
 		- Cookbook module (should go with cookbook detailed component) -mostly angular, some backend
-		- Recipe module (should go with recipe detailed component) -some angular, some backend
-		- Recipe detailed component
 		- Cookbook detailed component
 		
 	* Backend

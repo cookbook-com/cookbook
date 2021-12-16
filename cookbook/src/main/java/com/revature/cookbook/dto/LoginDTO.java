@@ -1,4 +1,4 @@
-package dto;
+package com.revature.cookbook.dto;
 
 import java.util.Objects;
 

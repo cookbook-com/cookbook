@@ -1,16 +1,82 @@
 package com.revature.tests;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import com.revature.model.modules.CookbookModule;
+import com.revature.model.modules.LoginModule;
+import com.revature.model.modules.ProfileModule;
+import com.revature.model.modules.RecipeModule;
+import com.revature.model.modules.SearchResultModule;
+import com.revature.model.modules.WelcomeModule;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class Steps {
 
+	private WebDriver driver;
+	private String websiteUrl = "";
+	private CookbookModule cookbookPage;
+	private LoginModule loginPage; 
+	private ProfileModule profilePage;
+	private RecipeModule recipePage;
+	private SearchResultModule searchResultsPage;
+	private WelcomeModule welcomePage;
+	
+	
+	@BeforeEach
+	public void setup() {
+		
+		
+		System.setProperty("webdriver.chrome.driver", "C:/WebDrivers/chromedriver.exe");
+		driver = new ChromeDriver();
+		
+		this.cookbookPage = null; 
+		this.loginPage = null;
+		this.profilePage = null;
+		this.recipePage = null;
+		this.searchResultsPage = null;
+		this.welcomePage = null;
+		
+	}
+	
+	@AfterEach
+	public void quit() {
+		
+		driver.close();
+		driver.quit();
+		
+		this.cookbookPage = null; 
+		this.loginPage = null;
+		this.profilePage = null;
+		this.recipePage = null;
+		this.searchResultsPage = null;
+		this.welcomePage = null;
+		
+		
+	}
+	
 	
 	@Given("I am at the recipe page while logged in")
 	public void i_am_at_the_recipe_page_while_logged_in() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		
+		driver.get(websiteUrl);
+		this.welcomePage = new WelcomeModule(driver);	//should be our default "page"
+		
+		welcomePage.navbar.hoverNavigationMenu();		//navigate to the signin page
+		welcomePage.navbar.clickSigninLink();
+		
+		this.loginPage = new LoginModule(driver);
+		loginPage.login.setUsernameField("testUser");	//set username and password to test values and click login button 
+		loginPage.login.setPasswordField("password");
+		loginPage.login.clickSubmit();					//should take us back to the welcome page while now signed in 
+		
+		//got to have some way
+
 	}
 
 	@When("I click add to cookbook")

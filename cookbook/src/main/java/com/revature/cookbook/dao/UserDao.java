@@ -1,4 +1,4 @@
-package dao;
+package com.revature.cookbook.dao;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import javax.persistence.NoResultException;
 
 import org.springframework.stereotype.Repository;
 
-import model.User;
+import com.revature.cookbook.model.User;
 
 @Repository
 public class UserDao {

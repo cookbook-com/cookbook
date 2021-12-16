@@ -138,6 +138,12 @@ public class NavbarComponent {
 		action.moveToElement(tagsDropdown).build().perform();		
 	}
 	
+	public void setSearchField(String query) {
+		
+		this.wdw.until(ExpectedConditions.visibilityOf(searchField)).sendKeys(query);
+		
+	}
+	
 	
 	
 	

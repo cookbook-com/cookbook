@@ -51,5 +51,17 @@ public class LoginComponent {
 		
 	}
 	
+	public void setUsernameField(String username) {
+		
+		this.wdw.until(ExpectedConditions.visibilityOf(usernameField)).sendKeys(username);
+		
+	}
+	
+	public void setPasswordField(String password) {
+		
+		this.wdw.until(ExpectedConditions.visibilityOf(passwordField)).sendKeys(password);
+		
+	}
+	
 	
 }

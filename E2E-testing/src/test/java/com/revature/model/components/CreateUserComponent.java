@@ -88,6 +88,47 @@ public class CreateUserComponent {
 		
 	}
 	
+	public void setUsernameField(String username) {
+		
+		this.wdw.until(ExpectedConditions.visibilityOf(usernameField)).sendKeys(username);
+		
+	}
+	
+	public void setPasswordField(String password) {
+		
+		this.wdw.until(ExpectedConditions.visibilityOf(passwordField)).sendKeys(password);
+		
+	}
+	
+	public void setRetypedPasswordField(String retypedPassword) {
+		
+		this.wdw.until(ExpectedConditions.visibilityOf(retypePasswordField)).sendKeys(retypedPassword);
+		
+	}
+	
+	public void setEmailField(String email) {
+		
+		this.wdw.until(ExpectedConditions.visibilityOf(emailField)).sendKeys(email);
+		
+	}
+	
+	public void setFirstnameField(String firstname) {
+		
+		this.wdw.until(ExpectedConditions.visibilityOf(firstnameField)).sendKeys(firstname);
+		
+	}
+	
+	public void setLastnameField(String lastname) {
+		
+		this.wdw.until(ExpectedConditions.visibilityOf(lastnameField)).sendKeys(lastname);
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	

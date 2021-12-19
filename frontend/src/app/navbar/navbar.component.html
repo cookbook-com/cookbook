@@ -1,1 +1,18 @@
-<p>navbar works!</p>
+<nav>
+    <!-- Section for user picture-->
+    <a routerLink="/navbar">Navbar</a> <!-- following along with example from Tour of Heroes a bit-->
+    <a routerLink="/welcome">Home</a>  <!-- routerlink set to /welcome matches the route to HeroesComponent, 
+        routerLink is the selector for the RouterLink directive that turns user clicks into router navigations-->
+    <!-- section for search bar-->
+    <input #searchBox id="search-box" placeholder= "Search recipe here" (input)="search(searchBox.value)">
+    <!-- section for Cookbook logo-->
+
+    <!-- will display a list of recipes names based on what is currently being in the search box-->
+    <ul class="search-result">
+        <li *ngFor="let recipe of recipes$ |async">
+            <a routerLink="/recipedetiled/{{recipe.idMeal}}"></a>
+            {{recipe.strMeal}} <!--I believe it should match the value in the recipe interface-->
+        </li>
+    </ul>
+</nav>
+

@@ -1,6 +1,7 @@
 package com.revature.cookbook.controller;
 
 import javax.security.auth.login.LoginException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +22,19 @@ public class AuthenticationController {
 	private UserService userService;
 	
 	@Autowired
-	private HttpSession session;
+	private HttpServletRequest req;
+	
+	private static final String CURRENTUSER = "currentuser";
+	
 	
 	@PostMapping(path = "/login")
 	public ResponseEntity<Object> login(@RequestBody LoginDTO dto) {
 		try {
 			User user = userService.getUserByUsernameAndPassword(dto.getUsername(), dto.getPassword());
 			
-			this.session.setAttribute("currentuser", user);
+			HttpSession session = req.getSession();
+			
+			session.setAttribute("currentuser", user);
 			
 			return ResponseEntity.status(200).body(user);
 		}catch (LoginException e) {
@@ -38,7 +44,7 @@ public class AuthenticationController {
 	
 	@GetMapping(path = "/currentuser")
 	public ResponseEntity<Object> getCurrentlyLoggedInUser() {
-		User user = (User) this.session.getAttribute("currentuser");
+		User user = (User) req.getSession().getAttribute("currentuser");
 		
 		if (user == null) {
 			return ResponseEntity.status(401).body("You are not currently logged in");

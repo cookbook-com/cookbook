@@ -1,33 +1,59 @@
-<div class="columns is-multiline is-mobile">
-    <div class="column is-one-quarter">
-        <figure class="image is-128x128">
-            <img src="https://bulma.io/images/placeholders/128x128.png">
-        </figure>
-    </div>
-    <div class="column is-one-quarter">
-        <figure class="image is-128x128">
-            <img src="https://bulma.io/images/placeholders/128x128.png">
-        </figure>
-    </div>
-    <div class="column is-one-quarter">
-      <code>is-one-quarter</code>
-    </div>
-    <div class="column is-one-quarter">
-      <code>is-one-quarter</code>
-    </div>
-    <div class="column is-half">
-      <code>is-half</code>
-    </div>
-    <div class="column is-one-quarter">
-      <code>is-one-quarter</code>
-    </div>
-    <div class="column is-one-quarter">
-      <code>is-one-quarter</code>
-    </div>
-    <div class="column is-one-quarter">
-      <code>is-one-quarter</code>
-    </div>
-    <div class="column">
-      Auto
-    </div>
+<div class = "columns is-multiline is-mobile is-centered">
+
+  <div class = "column is-full has-text-centered">
+
+    <h1 class = "title"> {{ recipeToBeDisplayed.strMeal }}</h1>
+
   </div>
+
+  <div class = "column is-one-third has-text-centered">
+
+    <img [src] = "recipeToBeDisplayed.strMealThumb">
+
+  </div>
+
+  <div class = "column is-two-thirds has-text-centered">
+
+    <code class="html">recipe info panel</code>
+
+    <div class = "columns is-multiline">
+
+      <div class = "column is-half">
+
+        <code> likes </code>
+
+      </div>
+
+      <div class = "column is-half">
+
+        <code> followers </code>
+
+      </div>
+
+      <div class =  "column is-full">
+
+        <code>Ingredients</code>
+
+        <ol>
+          <li>{{ recipeToBeDisplayed.strIngredient1 }}</li>
+          <li>{{ recipeToBeDisplayed.strIngredient2 }}</li>
+          <li>{{ recipeToBeDisplayed.strIngredient3 }}</li>
+        </ol>
+
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+  <div class = "column is-full has-text-centered">
+
+    <code>{{ recipeToBeDisplayed.strInstructions }}</code>
+
+  </div>
+
+
+</div>

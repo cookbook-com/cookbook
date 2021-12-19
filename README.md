@@ -21,7 +21,8 @@ Repo for holding Revature project 2 cookbook application
 	- URL database-1.cwiwtzs5wenw.us-east-2.rds.amazonaws.com:5432/postgres
 	- Username postgres
 	- Password panzergrenadier! ```Password all lowercase```
-	- For setting up your enviroment variables: db_url = jdbc:database-1.cwiwtzs5wenw.us-east-2.rds.amazonaws.com:5432/postgres
-												db_password = panzergrenadier!
-												db_username = postgres
+	- For setting up your enviroment variables: 
+	- `db_url = jdbc:postgresql://database-1.cwiwtzs5wenw.us-east-2.rds.amazonaws.com:5432/postgres`
+	- `db_password = panzergrenadier!`
+	- `db_username = postgres`
 	

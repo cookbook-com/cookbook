@@ -9,19 +9,14 @@ import { CreateuserComponent } from './createuser/createuser.component';
 import { LoginComponent } from './login/login.component';
 import { RecipedetailedComponent } from './recipedetailed/recipedetailed.component';
 import { RecipesummaryComponent } from './recipesummary/recipesummary.component';
-import { AppRoutingModule} from './app-routing-module';
+import { AppRoutingModule } from './app-routing-module';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule],
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -34,6 +29,6 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     UserProfileComponent,
   ],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

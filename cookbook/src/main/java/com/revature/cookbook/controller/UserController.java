@@ -2,6 +2,7 @@ package com.revature.cookbook.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import com.revature.cookbook.exception.UserNotFoundException;
 @RestController
 public class UserController {
 
+	@Autowired
 	private UserService userService;
 	
 	@GetMapping(path = "/users")
@@ -42,6 +44,7 @@ public class UserController {
 		User user = userService.addNewUser(newUser);
 		
 		return ResponseEntity.status(201).body(user);
+		
 	}
 	
 }

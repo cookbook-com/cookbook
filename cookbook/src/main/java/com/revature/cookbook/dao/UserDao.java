@@ -22,7 +22,7 @@ public class UserDao {
 	public List<User> getAllUsers(){
 		Session session = em.unwrap(Session.class);
 		
-		List<User> users =  session.createQuery("SELECT usr FROM USer usr").getResultList();
+		List<User> users =  session.createQuery("SELECT us FROM User us").getResultList();
 		
 		return users;
 	}

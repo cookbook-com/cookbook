@@ -2,9 +2,7 @@ export interface Recipe {
 
     idMeal: number,
     strMeal: string,
-    strIngredient1: string,
-    strIngredient2: string,
-    strIngredient3: string,
+    strIngredients: Array<string>,
     strInstructions: string,
     strMealThumb: string
 }

@@ -12,13 +12,13 @@ import { ThrowStmt } from '@angular/compiler';
 export class RecipedetailedComponent implements OnInit {
 
 
+  ingredients : Array<string> = new Array<string>(); 
+
   recipeToBeDisplayed: Recipe = { 
 
     idMeal: 0,
     strMeal: "",
-    strIngredient1: "",
-    strIngredient2: "",
-    strIngredient3: "",
+    strIngredients: new Array<string>(),
     strInstructions: "",
     strMealThumb: ""
 
@@ -35,7 +35,7 @@ export class RecipedetailedComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    this.recipeService.getRecipeIdObs().subscribe((data) => this.recipeToBeDisplayed.idMeal = data);
     this.getRandomRecipe();
 
 
@@ -46,12 +46,14 @@ export class RecipedetailedComponent implements OnInit {
   async getRecipeInfoById(recipeId: number) {
 
     this.recipeToBeDisplayed = await this.recipeService.getRecipeInfoById(recipeId);
+    this.ingredients = this.recipeToBeDisplayed.strIngredients;
 
   }
 
   async getRandomRecipe() {
 
     this.recipeToBeDisplayed = await this.recipeService.getRandomRecipe();
+    this.ingredients = this.recipeToBeDisplayed.strIngredients;
     
   }
 

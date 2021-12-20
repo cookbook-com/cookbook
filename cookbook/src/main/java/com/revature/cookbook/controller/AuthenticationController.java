@@ -1,5 +1,7 @@
 package com.revature.cookbook.controller;
 
+import java.security.NoSuchAlgorithmException;
+
 import javax.security.auth.login.LoginException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -30,7 +32,7 @@ public class AuthenticationController {
 
 	
 	@PostMapping(path = "/login")
-	public ResponseEntity<Object> login(@RequestBody LoginDTO dto) {
+	public ResponseEntity<Object> login(@RequestBody LoginDTO dto) throws NoSuchAlgorithmException {
 		try {
 			User user = this.userService.getUserByUsernameAndPassword(dto.getUsername(), dto.getPassword());
 			

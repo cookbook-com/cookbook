@@ -56,7 +56,7 @@ public class UserDao {
 	public User getUserByUsernameAndPassword(String username, String password) {
 		try {
 			User user = (User) em.createQuery("FROM User u WHERE u.username = :user AND u.password = :pass")
-					.setParameter("user", password)
+					.setParameter("user", username)
 					.setParameter("pass", password)
 					.getSingleResult();
 			

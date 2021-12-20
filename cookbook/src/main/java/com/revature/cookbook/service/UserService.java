@@ -17,6 +17,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
@@ -25,8 +26,9 @@ public class UserService {
 	@Autowired
 	private UserDao userDao;
 	
-	@Autowired 
-	private Logger logger;
+	private Logger logger = LoggerFactory.getLogger(UserService.class);
+	
+	
 
 	public List<User> getAllUsers() {
 		List<User> users = userDao.getAllUsers();

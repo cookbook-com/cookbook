@@ -4,6 +4,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,8 +25,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@Autowired 
-	private Logger logger; 
+	private Logger logger = LoggerFactory.getLogger(UserController.class); 
 	
 	@GetMapping(path = "/users")
 	public List<User> getAllUsers() {

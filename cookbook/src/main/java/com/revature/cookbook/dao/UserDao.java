@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.hibernate.NonUniqueResultException;
 import org.hibernate.Session;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.NoResultException;
 
@@ -23,8 +24,7 @@ public class UserDao {
 	@PersistenceContext
 	private EntityManager em;
 	
-	@Autowired
-	Logger logger; 
+	Logger logger = LoggerFactory.getLogger(UserDao.class); 
 	
 	@Transactional
 	public List<User> getAllUsers(){

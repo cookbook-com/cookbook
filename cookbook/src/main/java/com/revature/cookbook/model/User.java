@@ -7,40 +7,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+
 
 @Entity
-@Table(name = "users")
-
 public class User {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column(name = "user_id")
+
 private int id;
 
-@Column(name ="user_name", nullable = false)
 private String username;
 
-@Column(name ="password", nullable = false)
 private String password;
 
-@Column(name = "first_name", nullable = false)
 private String firstName;
 
-@Column( name = "last_name", nullable = false)
 private String lastName;
 
-@Column(name = "phone_number")
 private String phoneNumber;
 
-@Column(name ="email")
 private String email;
 
-@Column(name = "age")
 private int age;
 
-@Column(name = "likedRecipe")
 private int likedRecipe;
 
 public User() {

@@ -25,32 +25,44 @@ public class AuthenticationController {
 	private HttpServletRequest req;
 	
 	private static final String CURRENTUSER = "currentuser";
+
 	
+
 	
 	@PostMapping(path = "/login")
 	public ResponseEntity<Object> login(@RequestBody LoginDTO dto) {
 		try {
-			User user = userService.getUserByUsernameAndPassword(dto.getUsername(), dto.getPassword());
+			User user = this.userService.getUserByUsernameAndPassword(dto.getUsername(), dto.getPassword());
 			
 			HttpSession session = req.getSession();
-			
+
 			session.setAttribute("currentuser", user);
 			
 			return ResponseEntity.status(200).body(user);
 		}catch (LoginException e) {
 			return ResponseEntity.status(400).body(e.getMessage());
 		}
-	}
-	
+	}	
+
 	@GetMapping(path = "/currentuser")
 	public ResponseEntity<Object> getCurrentlyLoggedInUser() {
-		User user = (User) req.getSession().getAttribute("currentuser");
+		User user = (User) req.getSession().getAttribute(CURRENTUSER);
+
 		
-		if (user == null) {
-			return ResponseEntity.status(401).body("You are not currently logged in");
+		if (user != null) {
+			return ResponseEntity.status(200).body(user);
 		}
 		
-		return ResponseEntity.status(200).body(user);
+		
+		return ResponseEntity.status(401).body("Not logged in");
+	}
+	
+	@PostMapping(path = "/logout")
+	public ResponseEntity<String> logout() {
+		req.getSession().invalidate(); 
+		
+		return ResponseEntity.status(200).body("Successfully logged out");
 	}
 	
 }
+

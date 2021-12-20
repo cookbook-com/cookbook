@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+<<<<<<< HEAD
   title = 'frontend';
   recipeSummaryDisplayed: boolean = true; 
 
@@ -16,6 +17,9 @@ export class AppComponent {
   }
 
 
+=======
+  title = 'Cookbook';
+>>>>>>> 25f5bdd23bcab4424fb06a3482883bce5145d998
 }
 
 

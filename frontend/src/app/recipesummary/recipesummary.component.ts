@@ -15,9 +15,7 @@ export class RecipesummaryComponent implements OnInit {
 
     idMeal: 0,
     strMeal: "",
-    strIngredient1: "",
-    strIngredient2: "",
-    strIngredient3: "",
+    strIngredients: new Array<string>(),
     strInstructions: "",
     strMealThumb: ""
 

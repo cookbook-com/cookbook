@@ -1,7 +1,9 @@
 package com.revature.cookbook.controller;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,6 +24,9 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired 
+	private Logger logger; 
+	
 	@GetMapping(path = "/users")
 	public List<User> getAllUsers() {
 		return userService.getAllUsers();
@@ -39,11 +44,20 @@ public class UserController {
 	}
 	
 	@PostMapping(path = "/users", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Object> addNewUser(@RequestBody User newUser) {
+	public ResponseEntity<Object> addNewUser(@RequestBody User newUser) throws NoSuchAlgorithmException {
 		
-		User user = userService.addNewUser(newUser);
-		
-		return ResponseEntity.status(201).body(user);
+		try {
+			
+			User user = userService.addNewUser(newUser);
+			
+			return ResponseEntity.status(201).body(user);
+			
+		} catch(IllegalArgumentException e) {
+			
+			return ResponseEntity.status(400).body(e.getMessage());
+			
+		}
+
 		
 	}
 	

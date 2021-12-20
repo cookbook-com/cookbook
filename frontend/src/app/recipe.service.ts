@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, reduce, Subject } from 'rxjs';
+import { Recipe } from './Recipe';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,13 @@ export class RecipeService {
   }
 
   recipeId$ : Subject<number> = new Subject();
+  client! : HttpClient;
 
   private recipeUrl = 'api/recipe'; //URL to web api, form of :base/collectionName.
 
-  constructor(private http: HttpClient) { // if we're doing a message thing like in Tour of Heroes, include one here
+  constructor(http: HttpClient) { // if we're doing a message thing like in Tour of Heroes, include one here
+
+    this.client = http;
 
   }
 
@@ -28,6 +32,38 @@ export class RecipeService {
   setRecipeIdObs( recipeId : number) {
 
     this.recipeId$.next(recipeId);
+
+  }
+
+  async getRecipeInfoById(recipeId: number) : Promise<Recipe> {
+
+    let res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`, {
+
+      method: 'GET'
+
+    });
+
+    let data = await res.json();
+    
+    let recipe = data.meals[0];
+    return recipe;
+
+  
+
+  }
+
+  async getRandomRecipe() : Promise<Recipe> {
+
+    let res = await fetch('https://www.themealdb.com/api/json/v1/1/random.php', {
+
+      method: 'GET'
+
+    })
+
+    let data = await res.json();
+
+    let recipe = data.meals[0];
+    return recipe; 
 
   }
 

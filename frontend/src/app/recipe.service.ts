@@ -12,8 +12,9 @@ export class RecipeService {
     throw new Error('Method not implemented.');
   }
 
-  recipeId$ : Subject<number> = new Subject();
+  recipeIdDetailed$ : Subject<number> = new Subject();
   client! : HttpClient;
+
 
   private recipeUrl = 'api/recipe'; //URL to web api, form of :base/collectionName.
 
@@ -25,13 +26,13 @@ export class RecipeService {
 
   getRecipeIdObs() : Observable<number> {
 
-    return this.recipeId$.asObservable();
+    return this.recipeIdDetailed$.asObservable();
 
   }
   
   setRecipeIdObs( recipeId : number) {
 
-    this.recipeId$.next(recipeId);
+    this.recipeIdDetailed$.next(recipeId);
 
   }
 

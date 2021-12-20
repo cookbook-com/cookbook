@@ -12,6 +12,7 @@ import { ThrowStmt } from '@angular/compiler';
 export class RecipedetailedComponent implements OnInit {
 
 
+
   recipeToBeDisplayed: Recipe = { 
 
     idMeal: 0,
@@ -35,8 +36,8 @@ export class RecipedetailedComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-    this.getRandomRecipe();
+    this.recipeService.getRecipeIdObs().subscribe((data) => this.recipeToBeDisplayed.idMeal = data);
+    this.getRecipeInfoById(this.recipeToBeDisplayed.idMeal);
 
 
 

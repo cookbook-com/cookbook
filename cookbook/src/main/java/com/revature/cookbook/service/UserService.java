@@ -106,7 +106,7 @@ public class UserService {
 		md.update(passwordWithSalt.getBytes(StandardCharsets.UTF_8));
 		byte[] digest2 = md.digest();
 		
-		user.setPassword(String.format("064x", new BigInteger(1, digest2)));
+		user.setPassword(String.format("%064x", new BigInteger(1, digest2)));
 		
 		User newUser = userDao.addUser(user);
 		
@@ -115,8 +115,35 @@ public class UserService {
 			
 		}
 	
-	public User getUserByUsernameAndPassword(String username, String password) throws LoginException {
-		User user = userDao.getUserByUsernameAndPassword(username, password);
+	public User getUserByUsernameAndPassword(String username, String password) throws LoginException, NoSuchAlgorithmException {
+		
+		MessageDigest md = MessageDigest.getInstance("SHA-256");
+		md.update(username.getBytes(StandardCharsets.UTF_8));
+		byte[] digest = md.digest();
+		
+		String hashedUsername = String.format("%064x", new BigInteger(1, digest));
+		
+		User user = userDao.getUserByUsername(hashedUsername);
+		
+		if(user.equals(null)) {
+			
+			logger.info("USER SERVICE: No user with that username");
+			throw new LoginException("Failed to login, please check username and/or password");
+			
+		}
+		
+		//ok gotta salt and hash the password now
+		
+		String saltedPassword = password + user.getEmail();
+		md.update(saltedPassword.getBytes(StandardCharsets.UTF_8));
+		byte[] digest2 = md.digest();
+		
+		String hashedSaltedPassword = String.format("%064x", new BigInteger(1, digest2));
+		
+		
+		
+		
+		user = userDao.getUserByUsernameAndPassword(hashedUsername, hashedSaltedPassword);
 		
 		if(user == null) {
 			logger.info("USER SERVICE: No matching username password combination");

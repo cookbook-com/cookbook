@@ -70,6 +70,8 @@ public class UserDao {
 	@Transactional
 	public User getUserByUsername(String username) throws NonUniqueResultException {	//shouldnt ever throw this exception, because usernames should be unique. REALLY messed up if it throws
 		
+		//MAKE SURE WHEN YOU ARE USING THIS, THAT THE USERNAME IS ALREADY HASHED WITH SHA256, OTHERWISE IT WILL ALWAYS RETURN NULL
+		
 		try {
 			
 			User user = (User) em.createQuery("FROM User u WHERE u.username = :username").setParameter("username", username).getSingleResult();

@@ -1,5 +1,16 @@
-# cookbook
+# cookbook 
 Repo for holding Revature project 2 cookbook application 
+
+## Project description
+
+A website that users can look up recipes for meals on, and if they create an account can save recipes for later. They can look up specific recipes by
+keyword, or they can click a button that presents them a random recipe. Recipe information includes the name of the recipe, ingredients required, steps required
+and a small picture accompanying it. Users that are logged on may also like other recipes, add recipes to their cookbooks and follow other users or cookbooks.
+Users may also create their own recipes. 
+
+
+
+## Setup
 
 * When first setting up
 	- git clone git@github.com:cookbook-com/cookbook.git

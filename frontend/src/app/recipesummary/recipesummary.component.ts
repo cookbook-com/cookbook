@@ -11,7 +11,18 @@ export class RecipesummaryComponent implements OnInit {
 
   recipeService!: RecipeService;
 
-  recipeId : number = 0;
+  recipeToBeDisplayed: Recipe = { 
+
+    idMeal: 0,
+    strMeal: "",
+    strIngredient1: "",
+    strIngredient2: "",
+    strIngredient3: "",
+    strInstructions: "",
+    strMealThumb: ""
+
+  };
+
 
   constructor(recipeService: RecipeService) { 
 
@@ -21,13 +32,12 @@ export class RecipesummaryComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.recipeService.getRecipeIdObs().subscribe(number => this.recipeId = number);
-    this.recipeService.setRecipeIdObs(5);
 
   }
 
   ngOnDestroy(): void {
 
+    this.recipeService.setRecipeIdObs(this.recipeToBeDisplayed.idMeal);
 
   }
 

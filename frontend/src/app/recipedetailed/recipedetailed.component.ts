@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 import { Recipe } from '../Recipe';
 import { reduce } from 'rxjs';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-recipedetailed',
@@ -10,10 +11,6 @@ import { reduce } from 'rxjs';
 })
 export class RecipedetailedComponent implements OnInit {
 
-
-
-  recipeId: number = 0;
-  imageLink: string = '';
 
   recipeToBeDisplayed: Recipe = { 
 
@@ -38,7 +35,9 @@ export class RecipedetailedComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.recipeService.getRecipeIdObs().subscribe(number => this.recipeId = number);
+
+    this.getRandomRecipe();
+
 
 
 
@@ -46,50 +45,14 @@ export class RecipedetailedComponent implements OnInit {
 
   async getRecipeInfoById(recipeId: number) {
 
-    try{
-
-      console.log(recipeId);
-      let res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`, {
-
-        method: 'GET'
-
-      });
-
-      let data = await res.json(); 
-
-      this.recipeToBeDisplayed = data.meals[0];
-      console.log(this.recipeToBeDisplayed);
-
-    } catch(err) {
-
-      console.log(err);
-
-    }
+    this.recipeToBeDisplayed = await this.recipeService.getRecipeInfoById(recipeId);
 
   }
 
-  async getRecipeInfo() {
+  async getRandomRecipe() {
 
-    try {
-
-      let res = await fetch('https://www.themealdb.com/api/json/v1/1/random.php', {
-
-        method: 'GET'
-
-      });
-
-      let data = await res.json();
-
-      this.recipeToBeDisplayed = data.meals[0];
-      console.log(this.recipeToBeDisplayed);
-
-    } catch(err) {
-
-      console.log(err);
-
-    }
-
-
+    this.recipeToBeDisplayed = await this.recipeService.getRandomRecipe();
+    
   }
 
 

@@ -11,6 +11,8 @@ export class RecipesummaryComponent implements OnInit {
 
   recipeService!: RecipeService;
 
+  recipeId : number = 0;
+
   constructor(recipeService: RecipeService) { 
 
     this.recipeService = recipeService;
@@ -19,14 +21,13 @@ export class RecipesummaryComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.recipeService.recipeId = 52872;
+    this.recipeService.getRecipeIdObs().subscribe(number => this.recipeId = number);
+    this.recipeService.setRecipeIdObs(5);
 
   }
 
   ngOnDestroy(): void {
 
-    console.log("Summary destroyed");
-    this.recipeService.recipeId = 52828; 
 
   }
 

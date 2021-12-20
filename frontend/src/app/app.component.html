@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-<app-recipesummary *ngIf="recipeSummaryDisplayed"></app-recipesummary>
-<button id ="recipe-summary-toggle" (click) = "onToggleButtonClick()">Toggle recipe summary</button>
-<app-recipedetailed></app-recipedetailed>
-=======
 <h1>{{title}}</h1>
 <router-outlet></router-outlet> <!--Tells the the application to display a component (I think its should be welcome) when the user navigates to it, also tells the router 
     where to display routed views-->
+<app-recipesummary></app-recipesummary>
 <app-navbar></app-navbar> <!-- should make it so the application displays the nav bar-->
-<app-recipedetailed></app-recipedetailed> <!-- should make it so the application displays the recipe detailed-->
->>>>>>> 25f5bdd23bcab4424fb06a3482883bce5145d998
+<app-recipedetailed ></app-recipedetailed> <!-- should make it so the application displays the recipe detailed-->
 

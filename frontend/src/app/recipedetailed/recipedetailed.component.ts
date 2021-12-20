@@ -12,7 +12,7 @@ export class RecipedetailedComponent implements OnInit {
 
 
 
-  recipeId: number = 1;
+  recipeId: number = 0;
   imageLink: string = '';
 
   recipeToBeDisplayed: Recipe = { 
@@ -38,8 +38,9 @@ export class RecipedetailedComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.recipeService.recipeId);
-    this.getRecipeInfoById(this.recipeService.recipeId);
+    this.recipeService.getRecipeIdObs().subscribe(number => this.recipeId = number);
+
+
 
   }
 

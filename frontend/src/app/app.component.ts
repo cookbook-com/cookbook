@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
+  recipeSummaryDisplayed: boolean = true; 
+
+  onToggleButtonClick() {
+
+    this.recipeSummaryDisplayed = !this.recipeSummaryDisplayed;
+
+  }
+
+
 }
+
+

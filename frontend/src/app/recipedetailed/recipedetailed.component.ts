@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 import { Recipe } from '../Recipe';
 import { reduce } from 'rxjs';
@@ -9,6 +9,7 @@ import { reduce } from 'rxjs';
   styleUrls: ['./recipedetailed.component.css']
 })
 export class RecipedetailedComponent implements OnInit {
+
 
 
   recipeId: number = 1;
@@ -29,11 +30,40 @@ export class RecipedetailedComponent implements OnInit {
   recipeService!: RecipeService;
 
 
-  constructor() { }
+  constructor(recipeService: RecipeService) {
+
+    this.recipeService = recipeService;
+
+   }
 
   ngOnInit(): void {
 
-    this.getRecipeInfo();
+    console.log(this.recipeService.recipeId);
+    this.getRecipeInfoById(this.recipeService.recipeId);
+
+  }
+
+  async getRecipeInfoById(recipeId: number) {
+
+    try{
+
+      console.log(recipeId);
+      let res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`, {
+
+        method: 'GET'
+
+      });
+
+      let data = await res.json(); 
+
+      this.recipeToBeDisplayed = data.meals[0];
+      console.log(this.recipeToBeDisplayed);
+
+    } catch(err) {
+
+      console.log(err);
+
+    }
 
   }
 

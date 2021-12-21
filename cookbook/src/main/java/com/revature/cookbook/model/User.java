@@ -31,14 +31,17 @@ private String email;
 
 private int age;
 
-private int likedRecipe;
+private String likedRecipes;			//Should be a string consisting of integers representing Recipe IDs separated by spaces. Ex: "1 223 412 451 123" etc
 
 public User() {
 	super();
 }
 
+
+
+
 public User(int id, String username, String password, String firstName, String lastName, String phoneNumber,
-		String email, int age, int likedRecipe) {
+		String email, int age, String likedRecipes) {
 	super();
 	this.id = id;
 	this.username = username;
@@ -48,7 +51,7 @@ public User(int id, String username, String password, String firstName, String l
 	this.phoneNumber = phoneNumber;
 	this.email = email;
 	this.age = age;
-	this.likedRecipe = likedRecipe;
+	this.likedRecipes = likedRecipes;
 }
 
 public int getId() {
@@ -115,17 +118,17 @@ public void setAge(int age) {
 	this.age = age;
 }
 
-public int getLikedRecipe() {
-	return likedRecipe;
+public String getLikedRecipe() {
+	return likedRecipes;
 }
 
-public void setLikedRecipe(int likedRecipe) {
-	this.likedRecipe = likedRecipe;
+public void setLikedRecipe(String likedRecipes) {
+	this.likedRecipes = likedRecipes;
 }
 
 @Override
 public int hashCode() {
-	return Objects.hash(age, email, firstName, id, lastName, likedRecipe, password, phoneNumber, username);
+	return Objects.hash(age, email, firstName, id, lastName, likedRecipes, password, phoneNumber, username);
 }
 
 @Override
@@ -138,7 +141,7 @@ public boolean equals(Object obj) {
 		return false;
 	User other = (User) obj;
 	return age == other.age && Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName)
-			&& id == other.id && Objects.equals(lastName, other.lastName) && likedRecipe == other.likedRecipe
+			&& id == other.id && Objects.equals(lastName, other.lastName) && likedRecipes == other.likedRecipes
 			&& Objects.equals(password, other.password) && Objects.equals(phoneNumber, other.phoneNumber)
 			&& Objects.equals(username, other.username);
 }
@@ -147,7 +150,7 @@ public boolean equals(Object obj) {
 public String toString() {
 	return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
 			+ ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + ", email=" + email + ", age=" + age
-			+ ", likedRecipe=" + likedRecipe + "]";
+			+ ", likedRecipe=" + likedRecipes + "]";
 }
 
 

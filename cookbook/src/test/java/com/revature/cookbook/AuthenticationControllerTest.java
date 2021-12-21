@@ -44,8 +44,8 @@ public class AuthenticationControllerTest {
 		Session session = em.unwrap(Session.class);
 		Transaction tx = session.beginTransaction();
 		
-		User Rober = new User(1,"bob21","test","Robert","Smith","717-123-3456","bob@gmail.com",24,0);
-		User Jenn = new User(2,"jenn20","test","Jennifer","Elaine","535-456-4581","jen@gmail.com",30,0);
+		User Rober = new User(1,"bob21","test","Robert","Smith","717-123-3456","bob@gmail.com",24, "");
+		User Jenn = new User(2,"jenn20","test","Jennifer","Elaine","535-456-4581","jen@gmail.com",30, "");
 		
 		tx.commit();
 		session.close();
@@ -58,7 +58,7 @@ public class AuthenticationControllerTest {
 	//Act and Assert
 		MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post("/login").content(jsonToSend)
 				.contentType(MediaType.APPLICATION_JSON);
-		User expectedUser = new User(2,"jenn20","test","Jennifer","Elaine","535-456-4581","jen@gmail.com",30,0);
+		User expectedUser = new User(2,"jenn20","test","Jennifer","Elaine","535-456-4581","jen@gmail.com",30, "");
 		expectedUser.setId(2);
 		
 		String expectedJsonUser = mapper.writeValueAsString(expectedUser);

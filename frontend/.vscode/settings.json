@@ -4,8 +4,10 @@
         "Cookbookdetailed",
         "Createuser",
         "devkit",
+        "randomrecipe",
         "recipedetailed",
         "recipedetiled",
-        "recipesummary"
+        "recipesummary",
+        "Rrecipe"
     ]
 }

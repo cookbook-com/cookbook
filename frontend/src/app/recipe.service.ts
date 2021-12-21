@@ -40,7 +40,7 @@ export class RecipeService {
     return this.http.get<Hero[]>(this.heroesUrl).pipe(tap(_ => this.log('fetched heroes')), catchError(this.handleError<Hero[]>('getHeroes',[]))); 
     // returns an Observable of hero arrays, returning only a single hero array
     // httpClient.get() returns the body of the response as an untyped JSON object by default. By adding something like <Hero[]>, 
-    //it adds TypeScript capabilities, reducing errors during compile time
+    // it adds TypeScript capabilities, reducing errors during compile time
     // the server's data api determines the shape of the JSON data, in this project it returns the hero data as an array.
     // some APIs may bury the data within an object. Get the data out by processing the Observable result with the RxJS map() operator
     // tap() will look at the observable values, do nothing with them, and pass them along

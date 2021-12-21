@@ -1,18 +1,63 @@
-<nav>
-    <!-- Section for user picture-->
-    <a routerLink="/navbar">Navbar</a> <!-- following along with example from Tour of Heroes a bit-->
+<div id="profile">
+    <img id="user-profile-picture" [src] = ""> <!--userImageLink-->
+     <!-- For later https://stackoverflow.com/questions/56863495/how-to-display-image-in-angular-->
+    <p id="profile-username">Bob Ross</p>
+    <div class="profile-box">
+        <!-- navigates to user profile component/ or cookbook summary-->
+        <a routerLink="/welcome">User profile</a>
+        <!-- navigates to login page, if not logged in, if they are then it will say sign out-->
+        <a routerLink="/login">Sign in</a>
+        <!-- reference this https://stackoverflow.com/questions/34852627/how-to-change-the-logout-button-to-login-in-angular-->
+
+    </div>
+    <!-- Search reference https://medium.com/@uditgogoi1/search-bar-with-autocomplete-using-angular-5-and-angular-material-c5a77a429da7-->
+    <!-- Search reference https://dev.to/sandeepbalachandran/how-to-filter-the-data-with-a-common-search-bar-at-the-top-angular-8-16a-->
+    <!-- option 3 https://stackoverflow.com/questions/55373526/angular-7-search-bar-and-results-in-different-views-->
+    <!-- option 4 https://stackblitz.com/edit/angular-search-box-->
     <a routerLink="/welcome">Home</a>  <!-- routerlink set to /welcome matches the route to HeroesComponent, 
         routerLink is the selector for the RouterLink directive that turns user clicks into router navigations-->
-    <!-- section for search bar-->
-    <input #searchBox id="search-box" placeholder= "Search recipe here" (input)="search(searchBox.value)">
-    <!-- section for Cookbook logo-->
-
-    <!-- will display a list of recipes names based on what is currently being in the search box-->
-    <ul class="search-result">
-        <li *ngFor="let recipe of recipes$ |async">
-            <a routerLink="/recipedetiled/{{recipe.idMeal}}"></a>
-            {{recipe.strMeal}} <!--I believe it should match the value in the recipe interface-->
-        </li>
-    </ul>
-</nav>
+   
+    <!-- section to use filters-->   
+    <div id="search-recipe">
+        <!-- button to open filter options-->
+        <button id="filter-button" (click)="toggleFilters()">Filters</button>
+        <button id="random-recipe" (click)="getRandomRecipe()">Surprise me!</button>
+     <!-- will display a list of recipes names based on what is currently being in the search box-->
+    
+        <!-- section for search bar-->
+        <input #searchBox id="search-box" placeholder= "Search recipe here" (input)="search(searchBox.value)">
+        <button id="search-btn" (click)="search(searchBox.value)">Search recipe</button>
+        <ul class="search-result">
+            <li *ngFor="let recipe of recipes$ |async">
+                <a routerLink="/recipedetiled/{{recipe.idMeal}}">
+                {{recipe.strMeal}} <!--I believe it should match the value in the recipe interface-->
+                </a>
+            </li>
+        </ul>
+    <!-- section for logo-->
+        <div>
+            <!--Don't think I need name for the website as the logo should be enough-->
+            <img id="cookbook-logo" [src]=""> <!--logoImageLink-->
+        </div>
+    </div>
+</div>
+<!--
+<div id="mySideNav" class="sideNav" *ngIf="filterOnToggle">
+    -- close side nav button--
+    <button id="side-nav-button" (click)="toggleFilters()">x</button>
+    
+    -- section for search by ingredient--
+    <p id="filterP">Filter by:</p>
+    <a href="#" id="filterIng">Filter by ingredient: </a>
+    -- search like searching regular recipe goes here, WIP--
+        <input #filterIngredientsBox id="ingredient-Search" (input)="searchIngredient(filterIngredientsBox.value)">
+        <ul class="filter-result">
+            <li *ngFor="let ingredient of recipes$ | async">
+                <a routerLink="/recipedetiled/{{ingredient.idMeal}}">
+                    {{ingredient.strIngredients}}
+                </a>   
+            </li>
+        </ul>
+</div>
+-->
 

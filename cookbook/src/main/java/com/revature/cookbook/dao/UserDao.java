@@ -96,7 +96,7 @@ public class UserDao {
 		
 		try {
 			
-			User user = (User) em.createQuery("FROM user u WHERE u.email = :email").setParameter("email", email).getSingleResult();
+			User user = (User) em.createQuery("FROM User u WHERE u.email = :email").setParameter("email", email).getSingleResult();
 			logger.info("DAO: Got user by email " + email + ": " + user.toString());
 			return user; 
 			

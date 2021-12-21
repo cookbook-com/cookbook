@@ -9,13 +9,13 @@ import { User } from '../user';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  user = new User();
+  //  user = new User();
 
   constructor(private _service: RegistrationService) {}
 
   ngOnInit(): void {}
 
   loginUser() {
-    this._service.loginUserFromRemote();
+    //  this._service.loginUserFromRemote();
   }
 }

@@ -13,10 +13,10 @@ const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' }, // Makes our program go to the welcome page by default, change '/welcome' to whatever the welcome page is called
   { path: 'welcome', component: WelcomeComponent },
   { path: 'navbar', component: NavbarComponent },
-  { path: 'user-profile', component: UserProfileComponent },
+  { path: 'userprofile', component: UserProfileComponent },
   { path: 'recipedetailed', component: RecipedetailedComponent },
   { path: 'recipesummary', component: RecipesummaryComponent },
-  { path: 'random=recipe', component: RandomRecipeComponent },
+  { path: 'randomrecipe', component: RandomRecipeComponent },
   { path: '', component: LoginComponent },
 ];
 

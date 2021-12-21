@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Cookbook {
@@ -26,7 +27,11 @@ public class Cookbook {
 	private String recipeIds;
 	
 	
-	public Cookbook() {}
+	public Cookbook() {
+		
+		recipeIds = ""; //I dont want this to be null. Just easier that way. This way, I can just concatonate things no issue
+		
+	}
 	
 	
 

@@ -35,6 +35,7 @@ private String likedRecipes;			//Should be a string consisting of integers repre
 
 public User() {
 	super();
+	likedRecipes = ""; //Dont want this to be null. Just easier to handle that way 
 }
 
 

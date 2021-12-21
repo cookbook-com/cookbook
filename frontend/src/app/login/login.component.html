@@ -1,33 +1,27 @@
-<link
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-  rel="stylesheet"
-/>
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="panel panel-primary">
-      <p class="control has-icons-left has-icons-right">
-        <input class="input" type="email" placeholder="Email" />
-        <span class="icon is-small is-left">
-          <i class="fas fa-envelope"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
-        </span>
-      </p>
+  <h2>CookBook Login Page</h2>
+  <form #loginform="ngForm" (ngSubmit)="loginUser()">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Enter email"
+      />
     </div>
-    <div class="field">
-      <p class="control has-icons-left">
-        <input class="input" type="password" placeholder="Password" />
-        <span class="icon is-small is-left">
-          <i class="fas fa-lock"></i>
-        </span>
-      </p>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input
+        type="password"
+        class="form-control"
+        id="pwd"
+        placeholder="Enter password"
+      />
     </div>
-    <div class="field">
-      <p class="control">
-        <button id="login" class="button is-success">Login</button>
-        <button id="register" class="button is-success">Sign up</button>
-      </p>
+    <div class="checkbox">
+      <label><input type="checkbox" /> Remember me</label>
     </div>
-  </div>
+    <button type="submit" class="btn btn-info">Login</button>
+  </form>
 </div>

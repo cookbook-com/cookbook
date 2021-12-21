@@ -6,6 +6,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RecipedetailedComponent } from './recipedetailed/recipedetailed.component';
 import { RecipesummaryComponent } from './recipesummary/recipesummary.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' }, // Makes our program go to the welcome page by default, change '/welcome' to whatever the welcome page is called
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'recipedetailed', component: RecipedetailedComponent },
   { path: 'recipesummary', component: RecipesummaryComponent },
+  { path: '', component: LoginComponent },
 ];
 
 @NgModule({

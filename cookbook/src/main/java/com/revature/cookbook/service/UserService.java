@@ -47,13 +47,53 @@ public class UserService {
 		logger.info("USER SERVICE: User with id of "  + id + " successfully deleted");
 	}
 	
+	
+	
+	
 	public User addNewUser(User user) throws IllegalArgumentException, NoSuchAlgorithmException {
 		
+		//first check if anything is empty and/or null
+		
+		if(user.getUsername() == null || user.getUsername().length() == 0) {
+			
+			logger.info("USER SERVICE: Cannot create user. Username is empty");
+			throw new IllegalArgumentException("Unable to create user. Username is empty");	
+			
+		}
+		
+		if(user.getPassword() == null || user.getPassword().length() == 0 ) {
+			
+			logger.info("USER SERVICE: Cannot create user. Password is empty");
+			throw new IllegalArgumentException("Unable to create user. Password is empty");
+			
+		}
+		
+		if(user.getEmail() == null || user.getEmail().length() == 0 ) {
+			
+			logger.info("USER SERVICE: cannot create user. Email is empty");
+			throw new IllegalArgumentException("Unable to create user. Email is empty");
+			
+		}
+		
+		if(!(user.getFirstName() == null) && user.getFirstName().length() > 0 ) {	//first name isn't null, so we can trim 
+			
+			user.setFirstName(user.getFirstName().trim());
+			
+		}
+		
+		if(!(user.getLastName() == null) && user.getLastName().length() > 0 )  {
+			
+			user.setLastName(user.getLastName().trim());
+			
+		}
+		
+		if(!(user.getPhoneNumber() == null) && user.getPhoneNumber().length() > 0 ) {
+			
+			user.setPhoneNumber(user.getPhoneNumber().trim());
+			
+		}
+		
 		user.setUsername(user.getUsername().trim());
-		user.setPassword(user.getPassword().trim());
-		user.setFirstName(user.getFirstName().trim());
-		user.setLastName(user.getLastName().trim());
-		user.setPhoneNumber(user.getPhoneNumber().trim());
 		user.setEmail(user.getEmail().trim());
 		
 		
@@ -65,46 +105,28 @@ public class UserService {
 		
 		//gotta hash before we check if username or email exists. Since we only store hashed username. Actually email is fine plaintext
 		
-		if(!userDao.getUserByUsername(user.getUsername()).equals(null)) {	//If we find a user in our database with same username, throw exception. Shouldn't have users with same username
+		if(!(userDao.getUserByUsername(user.getUsername()) == null)) {	//If we find a user in our database with same username, throw exception. Shouldn't have users with same username
 			
 			logger.info("USER SERVICE: Cannot create user. User with username already exists");
 			throw new IllegalArgumentException("Cannot create new user. User with username already exists");
 			
 		}
 		
-		if(!userDao.getUserByEmail(user.getEmail()).equals(null)) {	//same thing for email
+		if(!(userDao.getUserByEmail(user.getEmail()) == null)) {	//same thing for email
 			
 			logger.info("USER SERVICE: Cannot create user. User with email already exists");
 			throw new IllegalArgumentException("Cannot create new user. User with email already exists");
 			
 		}
 		
-		if(user.getUsername().length() == 0 || user.getUsername().equals(null)) {
-			
-			logger.info("USER SERVICE: Cannot create user. Username is empty");
-			throw new IllegalArgumentException("Unable to create user. Username is empty");	
-			
-		}
-		
-		if(user.getPassword().length() == 0 || user.getPassword().equals(null)) {
-			
-			logger.info("USER SERVICE: Cannot create user. Password is empty");
-			throw new IllegalArgumentException("Unable to create user. Password is empty");
-			
-		}
-		
-		if(user.getEmail().length() == 0 || user.getEmail().equals(null)) {
-			
-			logger.info("USER SERVICE: cannot create user. Email is empty");
-			throw new IllegalArgumentException("Unable to create user. Email is empty");
-			
-		}
 		
 		
 		//Ok we've already hashed the username. Now lets salted and hash the password using email as salt
 		
-		String passwordWithSalt = user.getUsername() + user.getEmail(); 
+		String passwordWithSalt = user.getPassword() + user.getEmail(); 
 		
+		
+		logger.info("USER SERVICE: CREATE USER: PasswordWithSalt: " + passwordWithSalt);
 		md.update(passwordWithSalt.getBytes(StandardCharsets.UTF_8));
 		byte[] digest2 = md.digest();
 		
@@ -127,7 +149,7 @@ public class UserService {
 		
 		User user = userDao.getUserByUsername(hashedUsername);
 		
-		if(user.equals(null)) {
+		if(user == null) {
 			
 			logger.info("USER SERVICE: No user with that username");
 			throw new LoginException("Failed to login, please check username and/or password");
@@ -143,7 +165,7 @@ public class UserService {
 		String hashedSaltedPassword = String.format("%064x", new BigInteger(1, digest2));
 		
 		
-		
+		logger.info("USER SERVICE: Hashed and salted password: " + hashedSaltedPassword);
 		
 		user = userDao.getUserByUsernameAndPassword(hashedUsername, hashedSaltedPassword);
 		

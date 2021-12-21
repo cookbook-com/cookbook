@@ -1,4 +1,4 @@
-package com.revature.cookbook;
+package com.revature.cookbook.integrationtests;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

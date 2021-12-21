@@ -125,8 +125,6 @@ public class UserService {
 		
 		String passwordWithSalt = user.getPassword() + user.getEmail(); 
 		
-		
-		logger.info("USER SERVICE: CREATE USER: PasswordWithSalt: " + passwordWithSalt);
 		md.update(passwordWithSalt.getBytes(StandardCharsets.UTF_8));
 		byte[] digest2 = md.digest();
 		
@@ -163,9 +161,6 @@ public class UserService {
 		byte[] digest2 = md.digest();
 		
 		String hashedSaltedPassword = String.format("%064x", new BigInteger(1, digest2));
-		
-		
-		logger.info("USER SERVICE: Hashed and salted password: " + hashedSaltedPassword);
 		
 		user = userDao.getUserByUsernameAndPassword(hashedUsername, hashedSaltedPassword);
 		

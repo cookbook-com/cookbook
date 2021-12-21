@@ -14,6 +14,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RandomRecipeComponent } from './random-recipe/random-recipe.component';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RecipesummaryComponent,
     WelcomeComponent,
     UserProfileComponent,
+    RandomRecipeComponent,
   ],
 
   bootstrap: [AppComponent],

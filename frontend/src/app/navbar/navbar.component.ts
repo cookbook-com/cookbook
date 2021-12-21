@@ -29,9 +29,6 @@ export class NavbarComponent implements OnInit {
     // toggle filter to show/ hide navbar
     this.filterOnToggle = !this.filterOnToggle
   }
-  getRandomRecipe(){
-    this.recipeService.getRandomRecipe();
-  }
   /* WIP
   searchIngredient(term: string): void{
     this.searchTerms.next(term);

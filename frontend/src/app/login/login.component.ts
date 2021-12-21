@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { RegistrationService } from '../registration.service';
 import { User } from '../user';
+import { Router } from '@angular/router';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,13 +9,25 @@ import { User } from '../user';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  //  user = new User();
+  username!: string;
+  password!: string;
 
-  constructor(private _service: RegistrationService) {}
+  errorMessage!: string;
+
+  constructor(private loginService: LoginService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  loginUser() {
-    //  this._service.loginUserFromRemote();
+  onButtonClick() {
+    this.loginService.login(this.username, this.password).subscribe(
+      (res) => {
+        if (res.status === 200) {
+          let body = <User>res.body;
+        }
+      },
+      (err) => {
+        this.errorMessage = err.console.error;
+      }
+    );
   }
 }

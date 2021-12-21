@@ -2,7 +2,13 @@
   text-align: center;
 }
 
-.container {
+.wrapper {
   width: 20%;
   background-color: bisque;
+  align-self: center;
+  display: inline;
+}
+
+#error-message {
+  color: red;
 }

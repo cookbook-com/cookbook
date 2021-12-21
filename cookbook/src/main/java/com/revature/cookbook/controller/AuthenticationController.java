@@ -59,6 +59,19 @@ public class AuthenticationController {
 		return ResponseEntity.status(401).body("Not logged in");
 	}
 	
+	@GetMapping(path = "/loginstatus")
+	public ResponseEntity<Object> loginStatus() {
+		User currentlyLoggedInUser = (User) req.getSession().getAttribute(CURRENTUSER);
+		
+		if(currentlyLoggedInUser != null) {
+			return ResponseEntity.status(200).body(currentlyLoggedInUser);
+		}	
+			/*******
+			 * If null
+			 */
+			return ResponseEntity.status(401).body("Not logged in");		
+	}
+	
 	@PostMapping(path = "/logout")
 	public ResponseEntity<String> logout() {
 		req.getSession().invalidate(); 

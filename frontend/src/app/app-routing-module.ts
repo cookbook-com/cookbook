@@ -21,10 +21,7 @@ const routes: Routes = [
   { path: 'randomrecipe', component: RandomRecipeComponent },
   { path: 'recipesummary', component: RecipesummaryComponent },
   { path: 'login-page', component: LoginComponent },
-<<<<<<< HEAD
-=======
   
->>>>>>> 2f132f322949dbd4e47d398d0923b75f89d51f80
 ];
 
 @NgModule({

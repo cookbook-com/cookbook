@@ -1,5 +1,7 @@
 package com.revature.cookbook.service;
 
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ public class CookbookService {
 	
 	private Logger logger = LoggerFactory.getLogger(CookbookService.class);
 
-	public Cookbook createNewCookbook(Cookbook newCookbook, int userId) throws IllegalArgumentException{
+	public Cookbook createNewCookbook(Cookbook newCookbook, int userId) throws Exception{
 		
 		//check to see user we are trying to create a cookbook for actually exists; 
 		
@@ -41,23 +43,48 @@ public class CookbookService {
 		
 		createdCookbook = cookbookDao.createNewCookbook(createdCookbook);
 		
-		if(createdCookbook.getUser().getId() != userId) {
+		if(createdCookbook.getUser().getId() != userId) {	//if for some reason the userId we want to associate with this cookbook isnt actually the userId associated 
 			
+			throw new Exception("COOKBOOK DAO: Shouldnt ever get here. For some reason userId passed in argument didnt set in created cookbook");
 			
 		}
 		
 		
-		return null;
+		return createdCookbook;
 	}
 
+	
+	@Transactional
 	public Cookbook addRecipeToCookbook(int cookbookId, int recipeId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Cookbook cookbook = cookbookDao.getCookbookById(cookbookId);
+		
+		if(cookbook == null) {
+			
+			throw new IllegalArgumentException("COOKBOOK SERVICE: Unable to update cookbook. Cookbook does not exist");
+			
+		}
+		
+		cookbookDao.addRecipeToCookbook(cookbook, recipeId);
+		
+		return cookbook; 
+		
+		
 	}
 
 	public Cookbook getCookbook(int cookbookId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Cookbook cookbook = cookbookDao.getCookbookById(cookbookId);
+		
+		if(cookbook == null) {
+			
+			throw new IllegalArgumentException("COOKBOOK SERVICE: Unable to get cookbook. Cookbook with id " + cookbookId + " does not exist");
+			
+		}
+		
+		return cookbook; 
+		
+		
 	}
 
 }

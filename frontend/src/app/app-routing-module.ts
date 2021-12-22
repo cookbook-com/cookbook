@@ -17,10 +17,14 @@ const routes: Routes = [
   { path: 'userprofile', component: UserProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterUserComponent },
-  { path: 'recipedetailed', component: RecipedetailedComponent },
+  { path: 'recipedetailed/:id', component: RecipedetailedComponent },
   { path: 'randomrecipe', component: RandomRecipeComponent },
   { path: 'recipesummary', component: RecipesummaryComponent },
   { path: 'login-page', component: LoginComponent },
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 2f132f322949dbd4e47d398d0923b75f89d51f80
 ];
 
 @NgModule({

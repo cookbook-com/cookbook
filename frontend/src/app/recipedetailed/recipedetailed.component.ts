@@ -3,6 +3,14 @@ import { RecipeService } from '../recipe.service';
 import { Recipe } from '../Recipe';
 import { reduce } from 'rxjs';
 import { ThrowStmt } from '@angular/compiler';
+import { ActivatedRoute } from '@angular/router';
+
+
+
+//'recipedetailed/:id' id is like path param, so go to localhost:4200/recipedetailed/idofrecipe to bring up the detailed recipe page of the id of the recipe in there
+                                                  //      ^ obs will change when we deploy to AWS, but dont worry about that for now
+
+
 
 @Component({
   selector: 'app-recipedetailed',
@@ -12,6 +20,7 @@ import { ThrowStmt } from '@angular/compiler';
 export class RecipedetailedComponent implements OnInit {
 
 
+  id!: string | null;
   ingredients : Array<string> = new Array<string>(); 
 
   recipeToBeDisplayed: Recipe = { 
@@ -27,7 +36,7 @@ export class RecipedetailedComponent implements OnInit {
   recipeService!: RecipeService;
 
 
-  constructor(recipeService: RecipeService) {
+  constructor(recipeService: RecipeService, private route: ActivatedRoute) {
 
     this.recipeService = recipeService;
 
@@ -35,8 +44,17 @@ export class RecipedetailedComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.recipeService.getRecipeIdObs().subscribe((data) => this.recipeToBeDisplayed.idMeal = data);
-    this.getRandomRecipe();
+    this.id = this.route.snapshot.paramMap.get('id');
+
+    if(this.id == null) {
+
+      //throw some kind of error
+
+    } else {
+
+      this.getRecipeInfoById(parseInt(this.id));
+
+    }
 
 
 

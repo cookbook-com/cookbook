@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 import { User } from '../User';
+import { WelcomeComponent } from '../welcome/welcome.component';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,8 @@ export class LoginComponent implements OnInit {
       (res) => {
         if (res.status === 200) {
           let body = <User>res.body;
+
+          this.router.navigate([WelcomeComponent]); //Should be redirected to the WelcomeComponent
         }
       },
       (err) => {

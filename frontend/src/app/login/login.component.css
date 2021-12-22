@@ -3,10 +3,11 @@
 }
 
 .wrapper {
-  width: 20%;
-  background-color: bisque;
-  align-self: center;
-  display: inline;
+  background-color: aquamarine;
+}
+
+label {
+  margin-right: 10px;
 }
 
 #error-message {

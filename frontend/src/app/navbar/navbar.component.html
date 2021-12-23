@@ -9,32 +9,30 @@
         <a routerLink="/userprofile">User profile</a>
         <!-- navigates to login page, if not logged in, if they are then it will say sign out-->
         <!-- <button *ngIf="loggedInTrue" (click)="signIn()" routerLink="/login">Sign in</button> -->
-        <a *ngif="loggedInTrue" (click)="signIn()" routerLink="/login">Sign in</a>
-        <button *ngIf="loggedInFalse" (click)="signOut()">Sign out</button>
+        <a *ngIf="loggedInTrue" (click)="signIn()" routerLink="/login">Sign in</a>
+        <a *ngIf="loggedInFalse" (click)="signOut()" routerLink="/welcome">Sign out</a>
         <a routerLink="/register">Sign up</a>
 
     </div>
-    <!-- Search reference https://medium.com/@uditgogoi1/search-bar-with-autocomplete-using-angular-5-and-angular-material-c5a77a429da7  -->
-    <!-- Search reference https://dev.to/sandeepbalachandran/how-to-filter-the-data-with-a-common-search-bar-at-the-top-angular-8-16a 
-    https://dev.to/idrisrampurawala/creating-a-search-filter-in-angular-562d -->
     <!-- option 3 https://stackoverflow.com/questions/55373526/angular-7-search-bar-and-results-in-different-views -->
-    <!-- option 4 https://stackblitz.com/edit/angular-search-box -->
     <a routerLink="/welcome">Home</a>  <!-- routerlink set to /welcome matches the route to HeroesComponent, 
         routerLink is the selector for the RouterLink directive that turns user clicks into router navigations-->
    
     <!-- section to use filters-->   
     <div id="search-recipe">
-        <!-- button to open filter dropdown option-->
-        <!-- Turn below into a dropdown-->
         <!-- this should give an example https://stackblitz.com/edit/ng-search-filter -->
-        <button id="filter-button" (click)="toggleFilters()">Filters</button>
+        <select name="Filters" id="filter-drop-down">
+            <option value="name">Name</option>
+            <option value="ingredient">Ingredient</option>
+            <option value="category">Category</option>
+            <option value="area">Area</option>
+        </select>
         
      <!-- will display a list of recipes names based on what is currently being in the search box-->
     
         <!-- section for search bar-->
         <!-- might be useful: https://stackblitz.com/edit/simple-search-filter Just need to find a way to call the api search by ingredient-->
-        <!-- other references: https://stackblitz.com/edit/angular-simple-search
-            https://stackblitz.com/edit/angular-multiple-search-filters 
+        <!-- other references:
             
             to make search show results changing dynamically
             https://www.npmjs.com/package/ng2-nested-search
@@ -42,13 +40,14 @@
         
         -->
         <input #searchBox id="search-box" placeholder= "Search recipe here" (input)="search(searchBox.value)"> 
+        <!-- # is a template variable, https://angular.io/guide/template-reference-variables -->
         <!-- Will need to pass value from searchbox to recipe summary-->
         <button id="search-btn" routerLink="/recipesummary">Search recipe</button>
         <!-- <button id="search-btn" (click)="search(searchBox.value)">Search recipe</button> -->
         <!-- info on two-way databinding https://angular.io/guide/two-way-binding-->
         <ul class="search-result">
-            <li *ngFor="let recipe of recipes$ |async">
-                <a routerLink="/recipedetiled/{{recipe.idMeal}}">
+            <li *ngFor="let recipe of recipes$ | async">
+                <a routerLink="/recipedetailed/{{recipe.idMeal}}">
                 {{recipe.strMeal}} <!--I believe it should match the value in the recipe interface-->
                 </a>
             </li>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CurrentUserService } from '../current.user.service';
+import { User } from '../User';
+import { LogoutService } from '../logout.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,9 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  currentUser: User = {
+    id: 0,
+    username: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    email: '',
+    age: 0,
+    likedRecipe: '',
+  };
 
-  ngOnInit(): void {
+  public settingUser(newUser: User): void {}
+
+  constructor(
+    private router: Router,
+    private currentUserService: CurrentUserService,
+    private logoutService: LogoutService
+  ) {}
+
+  ngOnInit() {
+    this.currentUserService.getUser().subscribe();
   }
-
 }

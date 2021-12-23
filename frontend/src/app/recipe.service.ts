@@ -1,9 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 // HttpHeaders https://www.tektutorialshub.com/angular/angular-httpheaders/
 import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable, of, reduce, Subject } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
 // for the import above https://www.learnrxjs.io/learn-rxjs/operators/error_handling/catch or https://blog.angular-university.io/rxjs-error-handling/
 import { Recipe } from './Recipe';
 
@@ -17,35 +16,22 @@ export class RecipeService {
       // if not search term, return empty hero array.
       return of([]);
     }
-    return this.http.get<Recipe[]>(`${this.recipeUrl}/?name=${term}`).pipe(tap(x => x.length ? this.log(`found recipe matching "${term}"`) :
-      this.log(`no recipe matching "${term}"`)), catchError(this.handleError<Recipe[]>('searchRecipes', [])));
+    return this.http.get<Recipe[]>(`${this.recipeUrl}/search.php?s=${term}`);
     // The method returns immediately with an empty array if there is no search term. It is similar to getHeroes() but the URLis different, 
     // which includes a query string with the search term.
   }
 
   recipeIdDetailed$: Subject<number> = new Subject(); // throwing a error for some reason - Raf
-  client!: HttpClient; // Might not be needed as the constructor includes, private http: HttpClient - Raf
+  // client!: HttpClient; // Might not be needed as the constructor includes, private http: HttpClient - Raf
 
 
-  private recipeUrl = 'api/recipe'; //URL to web api, form of :base/collectionName.
+  private recipeUrl = 'www.themealdb.com/api/json/v1/1'; //URL to web api, form of :base/collectionName.
 
   constructor(private http: HttpClient) { // if we're doing a message thing like in Tour of Heroes, include one here
     // might not need this - Raf
-    this.client = http;
+    // this.client = http;
 
   }
-  /* Might be useful - Raf, taken from ToH (Tour of Heroes)
-   - GET heroes from the server 
-   getHeroes(): Observable<Hero[]> { // converted to use HttpClient, an observable of HttpClient always emits a single value and then completes
-    return this.http.get<Hero[]>(this.heroesUrl).pipe(tap(_ => this.log('fetched heroes')), catchError(this.handleError<Hero[]>('getHeroes',[]))); 
-    // returns an Observable of hero arrays, returning only a single hero array
-    // httpClient.get() returns the body of the response as an untyped JSON object by default. By adding something like <Hero[]>, 
-    // it adds TypeScript capabilities, reducing errors during compile time
-    // the server's data api determines the shape of the JSON data, in this project it returns the hero data as an array.
-    // some APIs may bury the data within an object. Get the data out by processing the Observable result with the RxJS map() operator
-    // tap() will look at the observable values, do nothing with them, and pass them along
-  }
-  */
 
   getRecipeIdObs(): Observable<number> {
 
@@ -353,31 +339,6 @@ export class RecipeService {
 
   }
 
-
-  /** From ToH
-  * Handle Http operation that failed.
-  * Let the app continue.
-  * @param operation - name of the operation that failed
-  * @param result - optional value to return as the observable result
-  */
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
-
-  private log(message: string) {
-    // this.messageService.add(`RecipeService: ${message}`);
-    // not sure what to replace with this if we're not doing a message component/ service like in ToH
-  }
 
   // a lot of our Http related code will go here ex: GET recipe, user, etc, if following a structure to Tour of Heroes. 
 }

@@ -1,0 +1,19 @@
+input {
+    width: 30%;
+  }
+  
+  .wrapper {
+    background-color: aquamarine;
+  }
+  
+  button {
+    margin-top: 20px;
+    width: max-content;
+    font-size: large;
+  }
+  
+  #cancelBtn {
+    font-size: large;
+    width: max-content;
+    margin-left: 40px;
+  }

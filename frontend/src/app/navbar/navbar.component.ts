@@ -37,13 +37,7 @@ export class NavbarComponent implements OnInit {
     this.loggedInTrue = !this.loggedInTrue
     this.loggedInFalse = !this.loggedInFalse; 
   }
-
-  filterOnToggle: boolean = false;
-  toggleFilters(){
-    // https://github.com/211018jwa/training/tree/main/week-9/mock-interview-angular-projects/group-one-app/src/app
-    // toggle filter to show/ hide navbar
-    this.filterOnToggle = !this.filterOnToggle
-  }
+  
 
   // filter by ingredient
   // filter by category ex. pasta, chicken, etc.

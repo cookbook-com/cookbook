@@ -1,6 +1,7 @@
 <div id="profile">
   <!-- overall potential reference https://angular.io/guide/http 
     https://angular.io/tutorial/toh-pt6#heroes-and-http  -->
+<<<<<<< HEAD
   <img id="user-profile-picture" [src]="" />
   <!--userImageLink-->
   <!-- For later https://stackoverflow.com/questions/56863495/how-to-display-image-in-angular-->
@@ -45,6 +46,76 @@
           <div class="card-content">
             {{ recipe.strMeal }}
           </div>
+=======
+    <img id="user-profile-picture" [src] = ""> <!--userImageLink-->
+     <!-- For later https://stackoverflow.com/questions/56863495/how-to-display-image-in-angular-->
+    <p id="profile-username">Bob Ross</p>
+    <div class="profile-box">
+        <!-- navigates to user profile component/ or cookbook summary-->
+        <a routerLink="/userprofile">User profile</a>
+        <!-- navigates to login page, if not logged in, if they are then it will say sign out-->
+        <!-- <button *ngIf="loggedInTrue" (click)="signIn()" routerLink="/login">Sign in</button> -->
+        <a *ngIf="loggedInTrue" (click)="signIn()" routerLink="/login">Sign in</a>
+        <a *ngIf="loggedInFalse" (click)="signOut()" routerLink="/welcome">Sign out</a>
+        <a routerLink="/register">Sign up</a>
+
+    </div>
+    <!-- option 3 https://stackoverflow.com/questions/55373526/angular-7-search-bar-and-results-in-different-views -->
+    <a routerLink="/welcome">Home</a>  <!-- routerlink set to /welcome matches the route to HeroesComponent, 
+        routerLink is the selector for the RouterLink directive that turns user clicks into router navigations-->
+   
+    <!-- section to use filters-->   
+    <div id="search-recipe">
+        <!-- this should give an example https://stackblitz.com/edit/ng-search-filter -->
+        <select name="Filters" id="filter-drop-down">
+            <option value="name">Name</option>
+            <option value="ingredient">Ingredient</option>
+            <option value="category">Category</option>
+            <option value="area">Area</option>
+        </select>
+        
+     <!-- will display a list of recipes names based on what is currently being in the search box-->
+    
+        <!-- section for search bar-->
+        <!-- might be useful: https://stackblitz.com/edit/simple-search-filter Just need to find a way to call the api search by ingredient-->
+        <!-- other references:
+            
+            to make search show results changing dynamically
+            https://www.npmjs.com/package/ng2-nested-search
+            https://stackblitz.com/edit/search-filter-ng2   
+        
+        -->
+<<<<<<< HEAD
+        <input #searchBox id="search-box" placeholder= "Search recipe here" (input)="search(searchBox.value)"> 
+        <!-- # is a template variable, https://angular.io/guide/template-reference-variables -->
+        <!-- Will need to pass value from searchbox to recipe summary-->
+        <button id="search-btn" routerLink="/recipesummary">Search recipe</button>
+        <!-- <button id="search-btn" (click)="search(searchBox.value)">Search recipe</button> -->
+        <!-- info on two-way databinding https://angular.io/guide/two-way-binding-->
+        <ul class="search-result">
+            <li *ngFor="let recipe of recipes$ | async">
+                <a routerLink="/recipedetailed/{{recipe.idMeal}}">
+                {{recipe.strMeal}} <!--I believe it should match the value in the recipe interface-->
+                </a>
+            </li>
+        </ul>
+        <button id="random-recipe" routerLink="/randomrecipe">Surprise me!</button>
+=======
+       
+             <!--I believe it should match the value in the recipe interface-->
+            
+        <!-- info on two-way databinding https://angular.io/guide/two-way-binding-->
+        <div class= "columns is -multiline" *ngIf="recipes$">
+            <div class="column is-4" *ngFor="let recipe of recipes$ |async">
+                <div class="card">
+                    <div class="card-content">
+                        {{recipe.strMeal}}
+                    </div>
+                </div>
+                
+            </div>
+            
+>>>>>>> 5aa4243f8b4bd22730f47596b61e07c603736a04
         </div>
       </div>
     </div>
@@ -52,7 +123,12 @@
             <input type="text"name="foodName" placeholder="Enter Food "class="food-input"[(ngModel)]="inputFood"/>
             <button id="food-btn" (click)="search(inputFood.value)" routerLink="">Search by Name</button>
         </div> -->
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d
+>>>>>>> 5aa4243f8b4bd22730f47596b61e07c603736a04
     <!-- section for logo-->
     <div>
       <!--Don't think I need name for the website as the logo should be enough-->
@@ -61,6 +137,7 @@
     </div>
   </div>
 </div>
+<<<<<<< HEAD
 <!--
 <div id="mySideNav" class="sideNav" *ngIf="filterOnToggle">
     References: https://stackblitz.com/edit/angular-side-nav-dynamic-expansive-menu
@@ -84,3 +161,6 @@
         </ul>
 </div>
 -->
+=======
+
+>>>>>>> 5aa4243f8b4bd22730f47596b61e07c603736a04

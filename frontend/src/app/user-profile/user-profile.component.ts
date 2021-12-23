@@ -22,8 +22,25 @@ export class UserProfileComponent implements OnInit {
     likedRecipe: '',
   };
 
+<<<<<<< HEAD
+  currentUser: User = {
+    id: 0,
+    username: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    email: '',
+    age: 0,
+    likedRecipe: '',
+  };
+
   public settingUser(newUser: User): void {}
 
+=======
+  public settingUser(newUser: User): void {}
+
+>>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d
   constructor(
     private router: Router,
     private currentUserService: CurrentUserService,

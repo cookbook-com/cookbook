@@ -44,4 +44,8 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
+<<<<<<< HEAD
 export class FoodPicsRoutingModule { }
+=======
+export class FoodPicsRoutingModule { }
+>>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d

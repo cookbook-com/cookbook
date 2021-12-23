@@ -148,7 +148,7 @@ public class UserServiceTests {
 		user.setEmail("test");
 		
 		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(user);
-		when(mockUserDao.getUserByUsernameAndPassword(hashedUsername, hashedSaltedPassword)).thenThrow(LoginException.class);
+		when(mockUserDao.getUserByUsernameAndPassword(hashedUsername, hashedSaltedPassword)).thenReturn(null);
 		
 		Assertions.assertThrows(LoginException.class, () -> {
 			
@@ -163,7 +163,7 @@ public class UserServiceTests {
 		
 		when(mockUserDao.getUserByUsername(null)).thenReturn(null);
 		
-		Assertions.assertThrows(LoginException.class, () -> {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			
 			userServiceSut.getUserByUsernameAndPassword(null, "password");
 			
@@ -183,7 +183,7 @@ public class UserServiceTests {
 		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(user);
 		when(mockUserDao.getUserByUsernameAndPassword(hashedUsername, "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08")).thenReturn(null);
 		
-		Assertions.assertThrows(LoginException.class, () -> {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			
 			userServiceSut.getUserByUsernameAndPassword("username", null);
 			
@@ -197,7 +197,7 @@ public class UserServiceTests {
 		
 		when(mockUserDao.getUserByUsername("")).thenReturn(null);
 		
-		Assertions.assertThrows(LoginException.class, () -> {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			
 			userServiceSut.getUserByUsernameAndPassword("", "password");
 			
@@ -217,7 +217,7 @@ public class UserServiceTests {
 		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(user);
 		when(mockUserDao.getUserByUsernameAndPassword(hashedUsername, "")).thenReturn(null);
 		
-		Assertions.assertThrows(LoginException.class, () -> {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			
 			userServiceSut.getUserByUsernameAndPassword("username", "");
 			

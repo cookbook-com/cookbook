@@ -79,11 +79,24 @@ public class UserService {
 			
 			user.setFirstName(user.getFirstName().trim());
 			
+			if(user.getFirstName().length() > 255) {
+				
+				logger.info("USER SERVICE: Cannot create new user. First name is too long (greater than 255 characters)" );
+				throw new IllegalArgumentException("Cannot create new user. First name is too long (greater than 255 characters)");
+				
+			}
+			
 		}
 		
 		if(!(user.getLastName() == null) && user.getLastName().length() > 0 )  {
 			
 			user.setLastName(user.getLastName().trim());
+			if(user.getLastName().length() > 255) {
+				
+				logger.info("USER SERVICE: Cannot create new user. Last name is too long (greater than 255 characters)" );
+				throw new IllegalArgumentException("Cannot create new user. Last name is too long (greater than 255 characters)");
+				
+			}
 			
 		}
 		
@@ -91,7 +104,28 @@ public class UserService {
 			
 			user.setPhoneNumber(user.getPhoneNumber().trim());
 			
+			if(user.getPhoneNumber().length() > 255) {
+				
+				logger.info("USER SERVICE: Cannot create new user. Phone number is too long (greater than 255 characters)" );
+				throw new IllegalArgumentException("Cannot create new user. Phone number is too long (greater than 255 characters)");
+				
+			}
+			
 		}
+		
+		//next check if anything is too long (greater than 255 characters). Dont need to check username and password. Since theyre hashed with sha256, they will always fit
+		
+
+		
+		
+		if(user.getEmail().length() > 255) {
+			
+			logger.info("USER SERVICE: Cannot create new user. Email is too long (greater than 255 characters)" );
+			throw new IllegalArgumentException("Cannot create new user. Email is too long (greater than 255 characters)");
+			
+		}
+		
+		
 		
 		user.setUsername(user.getUsername().trim());
 		user.setEmail(user.getEmail().trim());
@@ -138,6 +172,20 @@ public class UserService {
 		}
 	
 	public User getUserByUsernameAndPassword(String username, String password) throws LoginException, NoSuchAlgorithmException {
+		
+		
+		if(username == null || username.length() == 0) {
+			
+			logger.info("USER SERVICEL: Cannot get user by username and password. Username is empty or null");
+			throw new IllegalArgumentException("Cannot get user by username and password. Username is empty or null");
+			
+			
+		} else if(password == null || password.length() == 0) {
+			
+			logger.info("USER SERVICE: Cannot get user by username and password. Password is empty or null");
+			throw new IllegalArgumentException("Cannot get user by username and password. Password is empty or null");
+			
+		}
 		
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
 		md.update(username.getBytes(StandardCharsets.UTF_8));

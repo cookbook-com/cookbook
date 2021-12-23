@@ -15,7 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RandomRecipeComponent } from './random-recipe/random-recipe.component';
-import { RecipenameComponent } from './recipename/recipename.component';
+import { RecipenameComponent } from './food-pics/recipename/recipename.component';
+import { FoodPicService } from './food-pic.service';
 
 @NgModule({
   imports: [
@@ -38,7 +39,9 @@ import { RecipenameComponent } from './recipename/recipename.component';
     RandomRecipeComponent,
     RecipenameComponent,
   ],
-
+  providers:[
+    FoodPicService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

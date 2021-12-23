@@ -382,8 +382,5 @@ export class RecipeService {
   // a lot of our Http related code will go here ex: GET recipe, user, etc, if following a structure to Tour of Heroes. 
 
 
-getFood() {  
-  let url="/recipesummary/"; 
-  return this.http.get( url );
-}
+
 }

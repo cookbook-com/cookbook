@@ -16,25 +16,15 @@ export class RecipeService {
       // if not search term, return empty hero array.
       return of([]);
     }
-<<<<<<< HEAD
     return this.http.get<Recipe[]>(`${this.recipeUrl}/search.php?s=${term}`);
-=======
-    return this.http.get<Recipe[]>(`${this.recipeUrl}/${term}`).pipe(tap(x => x.length ? this.log(`found recipe matching "${term}"`) :
-      this.log(`no recipe matching "${term}"`)), catchError(this.handleError<Recipe[]>('searchRecipes', [])));
->>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d
-    // The method returns immediately with an empty array if there is no search term. It is similar to getHeroes() but the URLis different, 
-    // which includes a query string with the search term.
+    // The method returns immediately with an empty array if there is no search term.
   }
 
-  recipeIdDetailed$: Subject<number> = new Subject(); // throwing a error for some reason - Raf
+  recipeIdDetailed$: Subject<number> = new Subject();
   // client!: HttpClient; // Might not be needed as the constructor includes, private http: HttpClient - Raf
 
 
-<<<<<<< HEAD
   private recipeUrl = 'www.themealdb.com/api/json/v1/1'; //URL to web api, form of :base/collectionName.
-=======
-  private recipeUrl = 'https://themealdb.com/api/json/v1/1/search.php?s='; //URL to web api, form of :base/collectionName.
->>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d
 
   constructor(private http: HttpClient) { // if we're doing a message thing like in Tour of Heroes, include one here
     // might not need this - Raf
@@ -209,6 +199,7 @@ export class RecipeService {
       method: 'GET'
 
     })
+  
 
     let data = await res.json();
 

@@ -3,18 +3,10 @@ import { BehaviorSubject } from 'rxjs';
 import { User } from './User';
 
 @Injectable({
-<<<<<<< HEAD
-  providedIn: 'root'
-})
-export class CurrentUserService {
-
-  constructor() { }
-=======
   providedIn: 'root',
 })
 export class CurrentUserService {
   constructor() {}
->>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d
   user!: User;
 
   private currentUser = new BehaviorSubject(this.user);

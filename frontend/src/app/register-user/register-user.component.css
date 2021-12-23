@@ -1,5 +1,4 @@
 input {
-<<<<<<< HEAD
     width: 30%;
   }
   
@@ -18,23 +17,3 @@ input {
     width: max-content;
     margin-left: 40px;
   }
-=======
-  width: 30%;
-}
-
-.wrapper {
-  background-color: aquamarine;
-}
-
-button {
-  margin-top: 20px;
-  width: max-content;
-  font-size: large;
-}
-
-#cancelBtn {
-  font-size: large;
-  width: max-content;
-  margin-left: 40px;
-}
->>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d

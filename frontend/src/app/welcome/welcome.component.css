@@ -1,6 +1,4 @@
-
 div.gallery {
-<<<<<<< HEAD
     margin: 5px;
     border: 1px solid #ccc;
     float: left;
@@ -26,30 +24,3 @@ div.gallery {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     
   }
-=======
-  margin: 5px;
-  border: 1px solid #ccc;
-  float: left;
-  width: 180px;
-}
-
-div.gallery:hover {
-  border: 1px solid #777;
-}
-
-div.gallery img {
-  width: 100%;
-  height: auto;
-}
-
-div.desc {
-  padding: 15px;
-  text-align: center;
-}
-
-div.gallery {
- 
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  
-}
->>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d

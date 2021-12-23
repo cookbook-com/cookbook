@@ -9,10 +9,6 @@ import { RecipesummaryComponent } from './recipesummary/recipesummary.component'
 import { LoginComponent } from './login/login.component';
 import { RandomRecipeComponent } from './random-recipe/random-recipe.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
-<<<<<<< HEAD
-=======
-import { RecipenameComponent } from './food-pics/recipename/recipename.component';
->>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d
 import { FoodPicsRoutingModule } from './food-pics/food-pics-routing.module';
 import { Pic1Component } from './food-pics/pic1/pic1.component';
 import { Pic2Component } from './food-pics/pic2/pic2.component';

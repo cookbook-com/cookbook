@@ -1,10 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-<<<<<<< HEAD
-=======
-
->>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d
 @Injectable({
   providedIn: 'root'
 })

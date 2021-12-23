@@ -7,8 +7,8 @@ import { User } from './User';
 })
 export class CurrentUserService {
   constructor() {}
-
-  private currentUser = new BehaviorSubject(new User());
+  user!: User;
+  private currentUser = new BehaviorSubject(this.user);
   private curUserObserver = this.currentUser.asObservable();
 
   //Setting up variable to be observed

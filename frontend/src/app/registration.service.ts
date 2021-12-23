@@ -11,6 +11,7 @@ export class RegistrationService {
   constructor(private httpClient: HttpClient) {}
 
   submit(newUser: User) {
+    console.log(newUser);
     const requestBody = {
       username: newUser.username,
       password: newUser.password,

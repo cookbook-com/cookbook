@@ -34,16 +34,26 @@
             https://stackblitz.com/edit/angular-multiple-search-filters  
         
         -->
-        <input #searchBox id="search-box" placeholder= "Search recipe here" (input)="search(searchBox.value)">
-        <button id="search-btn" (click)="search(searchBox.value)">Search recipe</button>
+       
+             <!--I believe it should match the value in the recipe interface-->
+            
         <!-- info on two-way databinding https://angular.io/guide/two-way-binding-->
-        <ul class="search-result">
-            <li *ngFor="let recipe of recipes$ |async">
-                <a routerLink="/recipedetiled/{{recipe.idMeal}}">
-                {{recipe.strMeal}} <!--I believe it should match the value in the recipe interface-->
-                </a>
-            </li>
-        </ul>
+        <div class= "columns is -multiline" *ngIf="recipes$">
+            <div class="column is-4" *ngFor="let recipe of recipes$ |async">
+                <div class="card">
+                    <div class="card-content">
+                        {{recipe.strMeal}}
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        <!-- <div>
+            <input type="text"name="foodName" placeholder="Enter Food "class="food-input"[(ngModel)]="inputFood"/>
+            <button id="food-btn" (click)="search(inputFood.value)" routerLink="">Search by Name</button>
+        </div> -->
+          
     <!-- section for logo-->
         <div>
             <!--Don't think I need name for the website as the logo should be enough-->

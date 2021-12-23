@@ -42,6 +42,9 @@ public class UserServiceTests {
 	
 	private String hashedUsername = "16f78a7d6317f102bbd95fc9a4f3ff2e3249287690b8bdad6b7810f82b34ace3";	//From input "username"
 	private String hashedSaltedPassword = "a7574a42198b7d7eee2c037703a0b95558f195457908d6975e681e2055fd5eb9"; //password should be "password" and email should be "test"
+	private String longString = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+			+ "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+			+ "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 	
 	@BeforeEach
 	public void setup() {
@@ -160,13 +163,31 @@ public class UserServiceTests {
 		
 		when(mockUserDao.getUserByUsername(null)).thenReturn(null);
 		
+		Assertions.assertThrows(LoginException.class, () -> {
+			
+			userServiceSut.getUserByUsernameAndPassword(null, "password");
+			
+		});
+		
 	}
 	
 	@Test
 	@Transactional
 	public void getUserByUsernameAndPasswordPasswordNullNegative() {
 		
+		User user = new User();
+		user.setUsername(hashedUsername);
+		user.setPassword(hashedSaltedPassword);
+		user.setEmail("test");
 		
+		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(user);
+		when(mockUserDao.getUserByUsernameAndPassword(hashedUsername, "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08")).thenReturn(null);
+		
+		Assertions.assertThrows(LoginException.class, () -> {
+			
+			userServiceSut.getUserByUsernameAndPassword("username", null);
+			
+		});
 		
 	}
 	
@@ -174,22 +195,55 @@ public class UserServiceTests {
 	@Transactional
 	public void getUserByUsernameAndPasswordUsernameEmptyNegative() { 
 		
+		when(mockUserDao.getUserByUsername("")).thenReturn(null);
 		
+		Assertions.assertThrows(LoginException.class, () -> {
+			
+			userServiceSut.getUserByUsernameAndPassword("", "password");
+			
+		});
 	}
 	
 	@Test
 	@Transactional
 	public void getUserByUsernameAndPasswordPasswordEmptyNegative() {
 		
+		User user = new User();
 		
+		user.setUsername(hashedUsername);
+		user.setPassword(hashedSaltedPassword);
+		user.setEmail("test");
 		
+		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(user);
+		when(mockUserDao.getUserByUsernameAndPassword(hashedUsername, "")).thenReturn(null);
+		
+		Assertions.assertThrows(LoginException.class, () -> {
+			
+			userServiceSut.getUserByUsernameAndPassword("username", "");
+			
+		});
+	
 	}
 	
 	@Test
 	@Transactional 
-	public void newUserPositive() {
+	public void newUserPositive() throws IllegalArgumentException, NoSuchAlgorithmException {
 		
+		User user = new User();
+		user.setUsername("username");
+		user.setPassword("password");
+		user.setEmail("test");
 		
+		User expectedUser = new User();
+		expectedUser.setUsername(hashedUsername);
+		expectedUser.setPassword(hashedSaltedPassword);
+		expectedUser.setEmail("test");
+		
+		when(mockUserDao.addUser(user)).thenReturn(expectedUser);
+		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(null);
+		when(mockUserDao.getUserByEmail("test")).thenReturn(null);
+		
+		Assertions.assertEquals(expectedUser, userServiceSut.addNewUser(user));
 		
 	}
 	
@@ -197,7 +251,21 @@ public class UserServiceTests {
 	@Transactional
 	public void newUserFirstnameTooLongNegative() {
 		
+		User user = new User();
+		user.setUsername("username");
+		user.setPassword("password");
+		user.setEmail("test");
+		user.setFirstName(longString);
 		
+		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(null);
+		when(mockUserDao.getUserByEmail("test")).thenReturn(null);
+		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			
+			userServiceSut.addNewUser(user);
+			
+			
+		});
 		
 	}
 	
@@ -205,7 +273,20 @@ public class UserServiceTests {
 	@Transactional
 	public void newUserLastnameTooLongNegative() {
 		
+		User user = new User();
+		user.setUsername("username");
+		user.setPassword("password");
+		user.setEmail("test");
+		user.setLastName(longString);
 		
+		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(null);
+		when(mockUserDao.getUserByEmail("test")).thenReturn(null);
+		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			
+			userServiceSut.addNewUser(user);
+			
+		});
 		
 	}
 	
@@ -213,7 +294,20 @@ public class UserServiceTests {
 	@Transactional
 	public void newUserPhonenumberTooLongNegative() {
 		
+		User user = new User();
+		user.setUsername("username");
+		user.setPassword("password");
+		user.setEmail("test");
+		user.setPhoneNumber(longString);
 		
+		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(null);
+		when(mockUserDao.getUserByEmail("test")).thenReturn(null);
+		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			
+			userServiceSut.addNewUser(user);
+			
+		});
 		
 	}
 	
@@ -222,13 +316,40 @@ public class UserServiceTests {
 	@Transactional
 	public void newUserEmailTooLongNegative() {
 		
+		User user = new User();
+		user.setUsername("username");
+		user.setPassword("password");
+		user.setEmail("test");
+		user.setEmail(longString);
 		
+		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(null);
+		when(mockUserDao.getUserByEmail("test")).thenReturn(null);
+		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			
+			userServiceSut.addNewUser(user);
+			
+		});
 		
 	}
 	
 	@Test
 	@Transactional
 	public void newUserUsernameTakenNegative() {
+		
+		User user = new User();
+		user.setUsername("username");
+		user.setPassword("password");
+		user.setEmail("test");
+		
+		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(user);
+		when(mockUserDao.getUserByEmail("test")).thenReturn(null);
+		
+		Assertions.assertThrows(IllegalArgumentException.class, ()-> {
+			
+			userServiceSut.addNewUser(user);
+			
+		});
 		
 		
 		
@@ -238,7 +359,19 @@ public class UserServiceTests {
 	@Transactional
 	public void newUserEmailTakenNegative() {
 		
+		User user = new User();
+		user.setUsername("username");
+		user.setPassword("password");
+		user.setEmail("test");
 		
+		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(null);
+		when(mockUserDao.getUserByEmail("test")).thenReturn(user);
+		
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			
+			userServiceSut.addNewUser(user);
+			
+		});
 		
 	}
 	
@@ -246,7 +379,19 @@ public class UserServiceTests {
 	@Transactional
 	public void newUserUsernameEmptyNegative() {
 		
+		User user = new User();
+		user.setUsername("");
+		user.setPassword("password");
+		user.setEmail("test");
 		
+		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(null);
+		when(mockUserDao.getUserByEmail("test")).thenReturn(null);
+		
+		Assertions.assertThrows(IllegalArgumentException.class, ()-> {
+			
+			userServiceSut.addNewUser(user);
+			
+		});
 		
 	}
 	
@@ -254,7 +399,19 @@ public class UserServiceTests {
 	@Transactional
 	public void newUserUsernameNullNegative() {
 		
+		User user = new User();
+		user.setUsername(null);
+		user.setPassword("password");
+		user.setEmail("test");
 		
+		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(null);
+		when(mockUserDao.getUserByEmail("test")).thenReturn(null);
+		
+		Assertions.assertThrows(IllegalArgumentException.class, ()-> {
+			
+			userServiceSut.addNewUser(user);
+			
+		});
 		
 	}
 	
@@ -262,7 +419,19 @@ public class UserServiceTests {
 	@Transactional
 	public void newUserPasswordEmptyNegative() {
 		
+		User user = new User();
+		user.setUsername("username");
+		user.setPassword("");
+		user.setEmail("test");
 		
+		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(null);
+		when(mockUserDao.getUserByEmail("test")).thenReturn(null);
+		
+		Assertions.assertThrows(IllegalArgumentException.class, ()-> {
+			
+			userServiceSut.addNewUser(user);
+			
+		});
 		
 	}
 	
@@ -270,7 +439,19 @@ public class UserServiceTests {
 	@Transactional
 	public void newUserPasswordNullNegative() {
 		
+		User user = new User();
+		user.setUsername("username");
+		user.setPassword(null);
+		user.setEmail("test");
 		
+		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(null);
+		when(mockUserDao.getUserByEmail("test")).thenReturn(null);
+		
+		Assertions.assertThrows(IllegalArgumentException.class, ()-> {
+			
+			userServiceSut.addNewUser(user);
+			
+		});
 		
 	}
 	
@@ -278,7 +459,19 @@ public class UserServiceTests {
 	@Transactional
 	public void newUserEmailEmptyNegative() {
 		
-	
+		User user = new User();
+		user.setUsername("username");
+		user.setPassword("password");
+		user.setEmail("");
+		
+		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(null);
+		when(mockUserDao.getUserByEmail("test")).thenReturn(null);
+		
+		Assertions.assertThrows(IllegalArgumentException.class, ()-> {
+			
+			userServiceSut.addNewUser(user);
+			
+		});
 		
 	}
 	
@@ -286,7 +479,19 @@ public class UserServiceTests {
 	@Transactional
 	public void newUserEmailNullNegative() {
 		
+		User user = new User();
+		user.setUsername("username");
+		user.setPassword("password");
+		user.setEmail(null);
 		
+		when(mockUserDao.getUserByUsername(hashedUsername)).thenReturn(null);
+		when(mockUserDao.getUserByEmail("test")).thenReturn(null);
+		
+		Assertions.assertThrows(IllegalArgumentException.class, ()-> {
+			
+			userServiceSut.addNewUser(user);
+			
+		});
 		
 	}
 	

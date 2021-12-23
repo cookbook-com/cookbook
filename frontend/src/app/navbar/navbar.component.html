@@ -21,7 +21,7 @@
     <!-- section to use filters-->   
     <div id="search-recipe">
         <!-- this should give an example https://stackblitz.com/edit/ng-search-filter -->
-        <select name="Filters" id="filter-drop-down">
+        <select name="Filters" (change)="filterState()" id="filter-drop-down">
             <option value="name">Name</option>
             <option value="ingredient">Ingredient</option>
             <option value="category">Category</option>
@@ -39,7 +39,6 @@
             https://stackblitz.com/edit/search-filter-ng2   
         
         -->
-<<<<<<< HEAD
         <input #searchBox id="search-box" placeholder= "Search recipe here" (input)="search(searchBox.value)"> 
         <!-- # is a template variable, https://angular.io/guide/template-reference-variables -->
         <!-- Will need to pass value from searchbox to recipe summary-->
@@ -54,7 +53,6 @@
             </li>
         </ul>
         <button id="random-recipe" routerLink="/randomrecipe">Surprise me!</button>
-=======
        
              <!--I believe it should match the value in the recipe interface-->
             
@@ -75,7 +73,6 @@
             <button id="food-btn" (click)="search(inputFood.value)" routerLink="">Search by Name</button>
         </div> -->
           
->>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d
     <!-- section for logo-->
         <div>
             <!--Don't think I need name for the website as the logo should be enough-->

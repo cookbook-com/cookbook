@@ -7,10 +7,6 @@ import { FoodPicService } from 'src/app/food-pic.service';
   styleUrls: ['./pic3.component.css']
 })
 export class Pic3Component implements OnInit {
-<<<<<<< HEAD
-
-=======
->>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d
   data: any;
   constructor(private foodServe: FoodPicService) { }
 

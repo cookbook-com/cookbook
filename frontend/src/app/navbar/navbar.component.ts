@@ -21,6 +21,10 @@ export class NavbarComponent implements OnInit {
   constructor(private recipeService:  RecipeService, ) {
    
    }
+   filterState(){
+     
+   }
+
   // Push a search term into the observable stream.
   search(term: string): void{
     this.searchTerms.next(term);
@@ -35,22 +39,12 @@ export class NavbarComponent implements OnInit {
     this.loggedInTrue = !this.loggedInTrue
     this.loggedInFalse = !this.loggedInFalse; 
   }
-<<<<<<< HEAD
   signIn(){
     console.log("logged in");
     this.loggedInTrue = !this.loggedInTrue
     this.loggedInFalse = !this.loggedInFalse; 
-=======
- 
-  
-
-  /* WIP
-  searchIngredient(term: string): void{
-    this.searchTerms.next(term);
->>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d
   }
   
-
   // filter by ingredient
   // filter by category ex. pasta, chicken, etc.
   // filter by area/ cuisine ex. italian, british, etc.

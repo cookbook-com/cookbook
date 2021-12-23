@@ -1,1 +1,90 @@
-<p>register-user works!</p>
+<div class="wrapper">
+  <dir class="container">
+    <h2 class="has-text-black">
+      Please fill your information in the field below
+    </h2>
+    <div class="field"></div>
+    <label class="label">Username</label>
+    <div class="control">
+      <input
+        type="text"
+        class="input is-primary"
+        placeholder="UserName"
+        id="username"
+      />
+    </div>
+
+    <div class="field"></div>
+    <label class="label">Password</label>
+    <div class="control">
+      <input
+        type="password"
+        class="input is-primary"
+        placeholder="Password"
+        id="Password"
+      />
+    </div>
+
+    <div class="field"></div>
+    <label class="label">First name</label>
+    <div class="control">
+      <input
+        type="text"
+        class="input is-primary"
+        placeholder="first name"
+        id="firstName"
+      />
+    </div>
+
+    <div class="field"></div>
+    <label class="label">Last name</label>
+    <div class="control">
+      <input
+        type="text"
+        class="input is-primary"
+        placeholder="Last name"
+        id="lastName"
+      />
+    </div>
+
+    <div class="field"></div>
+    <label class="label">Phone number</label>
+    <div class="control">
+      <input
+        type="tel"
+        class="input is-primary"
+        placeholder="Phone number"
+        id="phoneNumber"
+      />
+    </div>
+
+    <div class="field"></div>
+    <label class="label">Email</label>
+    <div class="control">
+      <input
+        type="email"
+        class="input is-primary"
+        placeholder="Email"
+        id="Email"
+      />
+    </div>
+
+    <div class="field"></div>
+    <label class="label">Age</label>
+    <div class="control">
+      <input
+        type="text"
+        class="input is-primary"
+        placeholder="Age"
+        id="userAge"
+      />
+    </div>
+
+    <div class="buttons">
+      <button class="button is-danger" id="submitBtn" (click)="submit()">
+        Submit
+      </button>
+      <button class="button is-normal" id="cancelBtn">Cancel</button>
+    </div>
+  </dir>
+</div>

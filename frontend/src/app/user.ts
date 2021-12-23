@@ -7,5 +7,5 @@ export interface User {
   phoneNumber: string;
   email: string;
   age: number;
-  likedRecipe: number;
+  likedRecipe: string;
 }

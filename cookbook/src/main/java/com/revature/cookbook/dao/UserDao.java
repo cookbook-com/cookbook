@@ -26,6 +26,7 @@ public class UserDao {
 	
 	Logger logger = LoggerFactory.getLogger(UserDao.class); 
 	
+	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<User> getAllUsers(){
 		Session session = em.unwrap(Session.class);
@@ -38,10 +39,19 @@ public class UserDao {
 	}
 	
 	@Transactional
-	public void deleteUserById(int id) {
+	public void deleteUserById(int id) throws IllegalArgumentException {
 		Session session = em.unwrap(Session.class);
 		
 		User deletedUser = session.get(User.class, id);
+		
+		if(deletedUser == null) {
+			
+			logger.info("USER DAO: Cannot delete user. User with id of " + id + " does not exist");
+			throw new IllegalArgumentException("Cannot delete user. User with id of " + id +" does not exist");
+			
+			
+		}
+		
 		session.remove(deletedUser);
 		
 		logger.info("DAO: Deleted user with id " + id);

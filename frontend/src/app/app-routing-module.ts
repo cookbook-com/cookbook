@@ -9,6 +9,7 @@ import { RecipesummaryComponent } from './recipesummary/recipesummary.component'
 import { LoginComponent } from './login/login.component';
 import { RandomRecipeComponent } from './random-recipe/random-recipe.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { RecipenameComponent } from './recipename/recipename.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' }, // Makes our program go to the welcome page by default, change '/welcome' to whatever the welcome page is called
@@ -21,10 +22,7 @@ const routes: Routes = [
   { path: 'randomrecipe', component: RandomRecipeComponent },
   { path: 'recipesummary', component: RecipesummaryComponent },
   { path: 'login-page', component: LoginComponent },
-<<<<<<< HEAD
-=======
-  
->>>>>>> 2f132f322949dbd4e47d398d0923b75f89d51f80
+  { path: 'food-name', component: RecipenameComponent}
 ];
 
 @NgModule({

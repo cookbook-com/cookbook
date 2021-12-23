@@ -17,7 +17,7 @@ export class RecipeService {
       // if not search term, return empty hero array.
       return of([]);
     }
-    return this.http.get<Recipe[]>(`${this.recipeUrl}/?name=${term}`).pipe(tap(x => x.length ? this.log(`found recipe matching "${term}"`) :
+    return this.http.get<Recipe[]>(`${this.recipeUrl}/${term}`).pipe(tap(x => x.length ? this.log(`found recipe matching "${term}"`) :
       this.log(`no recipe matching "${term}"`)), catchError(this.handleError<Recipe[]>('searchRecipes', [])));
     // The method returns immediately with an empty array if there is no search term. It is similar to getHeroes() but the URLis different, 
     // which includes a query string with the search term.
@@ -27,7 +27,7 @@ export class RecipeService {
   client!: HttpClient; // Might not be needed as the constructor includes, private http: HttpClient - Raf
 
 
-  private recipeUrl = 'api/recipe'; //URL to web api, form of :base/collectionName.
+  private recipeUrl = 'https://themealdb.com/api/json/v1/1/search.php?s='; //URL to web api, form of :base/collectionName.
 
   constructor(private http: HttpClient) { // if we're doing a message thing like in Tour of Heroes, include one here
     // might not need this - Raf
@@ -380,4 +380,10 @@ export class RecipeService {
   }
 
   // a lot of our Http related code will go here ex: GET recipe, user, etc, if following a structure to Tour of Heroes. 
+
+
+getFood() {  
+  let url="/recipesummary/"; 
+  return this.http.get( url );
+}
 }

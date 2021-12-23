@@ -16,7 +16,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RandomRecipeComponent } from './random-recipe/random-recipe.component';
 import { RecipenameComponent } from './food-pics/recipename/recipename.component';
 import { FoodPicService } from './food-pic.service';
+<<<<<<< HEAD
 
+=======
+>>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d
 
 @NgModule({
   imports: [

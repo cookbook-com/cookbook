@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import com.revature.cookbook.model.User;
 import com.revature.cookbook.service.UserService;
 
 @RestController
+@CrossOrigin(originPatterns = "*", allowCredentials = "true")
 public class AuthenticationController {
 
 	@Autowired

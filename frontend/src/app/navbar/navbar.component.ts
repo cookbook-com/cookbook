@@ -3,6 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Recipe } from '../Recipe';
 import { RecipeService } from '../recipe.service';
+
 //import { RecipeSearchService } from '../recipe.service'; // maybe replace later with a search service, if we make one EDIT: not needed since we get put all of our methods in recipe.ts
 
 @Component({
@@ -17,7 +18,9 @@ export class NavbarComponent implements OnInit {
   userImageLink = "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcliparts.co%2Fcliparts%2Fdc4%2Foyn%2Fdc4oyngoi.jpg&f=1&nofb=1";
   logoImageLink ="https://i.pinimg.com/600x315/22/d8/c6/22d8c6d951616262123aa3e7229d7cbc.jpg";
 
-  constructor(private recipeService: RecipeService) { }
+  constructor(private recipeService:  RecipeService, ) {
+   
+   }
   // Push a search term into the observable stream.
   search(term: string): void{
     this.searchTerms.next(term);
@@ -32,10 +35,19 @@ export class NavbarComponent implements OnInit {
     this.loggedInTrue = !this.loggedInTrue
     this.loggedInFalse = !this.loggedInFalse; 
   }
+<<<<<<< HEAD
   signIn(){
     console.log("logged in");
     this.loggedInTrue = !this.loggedInTrue
     this.loggedInFalse = !this.loggedInFalse; 
+=======
+ 
+  
+
+  /* WIP
+  searchIngredient(term: string): void{
+    this.searchTerms.next(term);
+>>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d
   }
   
 
@@ -57,5 +69,6 @@ export class NavbarComponent implements OnInit {
       switchMap((term: string) => this.recipeService.searchRecipes(term)),
     );
   }
+ 
 
 }

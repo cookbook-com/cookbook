@@ -39,6 +39,7 @@
             https://stackblitz.com/edit/search-filter-ng2   
         
         -->
+<<<<<<< HEAD
         <input #searchBox id="search-box" placeholder= "Search recipe here" (input)="search(searchBox.value)"> 
         <!-- # is a template variable, https://angular.io/guide/template-reference-variables -->
         <!-- Will need to pass value from searchbox to recipe summary-->
@@ -53,6 +54,28 @@
             </li>
         </ul>
         <button id="random-recipe" routerLink="/randomrecipe">Surprise me!</button>
+=======
+       
+             <!--I believe it should match the value in the recipe interface-->
+            
+        <!-- info on two-way databinding https://angular.io/guide/two-way-binding-->
+        <div class= "columns is -multiline" *ngIf="recipes$">
+            <div class="column is-4" *ngFor="let recipe of recipes$ |async">
+                <div class="card">
+                    <div class="card-content">
+                        {{recipe.strMeal}}
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        <!-- <div>
+            <input type="text"name="foodName" placeholder="Enter Food "class="food-input"[(ngModel)]="inputFood"/>
+            <button id="food-btn" (click)="search(inputFood.value)" routerLink="">Search by Name</button>
+        </div> -->
+          
+>>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d
     <!-- section for logo-->
         <div>
             <!--Don't think I need name for the website as the logo should be enough-->

@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
+=======
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+>>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d
 import { User } from './User';
 
 @Injectable({
@@ -11,6 +15,10 @@ export class RegistrationService {
   constructor(private httpClient: HttpClient) {}
 
   submit(newUser: User) {
+<<<<<<< HEAD
+=======
+    console.log(newUser);
+>>>>>>> f9d6a518df6efa8114f2e1fd79aa64078380587d
     const requestBody = {
       username: newUser.username,
       password: newUser.password,

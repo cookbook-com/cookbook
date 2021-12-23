@@ -5,7 +5,13 @@
       <label class="has-text-white-bis is-size-5" for="username"
         >Username:</label
       >
-      <input class="mb-1" type="text" id="username" placeholder="Username" />
+      <input
+        class="mb-1"
+        type="text"
+        id="username"
+        placeholder="Username"
+        [(ngModel)]="username"
+      />
     </div>
     <div>
       <label class="has-text-white-bis is-size-5" for="pwd">Password:</label>
@@ -14,6 +20,7 @@
         type="password"
         id="pwd"
         placeholder="Enter password"
+        [(ngModel)]="password"
       />
     </div>
     <div class="mb-1">
@@ -22,10 +29,16 @@
       >
     </div>
     <div class="mb-1">
-      <button class="button is-danger is-size-5 mb-6" type="submit">
+      <button
+        (click)="onButtonClick()"
+        class="button is-danger is-size-5 mb-6"
+        type="submit"
+      >
         Login
       </button>
     </div>
-    <div class="mb-1" *ngIf="errorMessage" id="error-message"></div>
+    <div class="mb-1" *ngIf="errorMessage" id="error-message">
+      {{ errorMessage }}
+    </div>
   </div>
 </div>

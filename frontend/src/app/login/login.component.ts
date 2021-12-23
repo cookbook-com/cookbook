@@ -19,13 +19,24 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  checkIfLoggedIn() {
+    this.loginService.checkingLoginStatus().subscribe(
+      (res) => {
+        if (res.status === 200) {
+          let body = <User>res.body;
+          this.router.navigate(['welcome']);
+        }
+      },
+      (err) => {}
+    );
+  }
   onButtonClick() {
     this.loginService.login(this.username, this.password).subscribe(
       (res) => {
         if (res.status === 200) {
           let body = <User>res.body;
 
-          this.router.navigate([WelcomeComponent]); //Should be redirected to the WelcomeComponent
+          this.router.navigate(['welcome']);
         }
       },
       (err) => {

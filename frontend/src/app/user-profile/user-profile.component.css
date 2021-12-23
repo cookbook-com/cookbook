@@ -1,0 +1,17 @@
+input {
+  width: 30%;
+}
+
+.wrapper {
+  background-color: aquamarine;
+}
+
+.ageField {
+  margin-bottom: 40px;
+}
+
+button {
+  margin-top: 20px;
+  width: max-content;
+  font-size: large;
+}

@@ -8,6 +8,7 @@ import { User } from './User';
 export class CurrentUserService {
   constructor() {}
   user!: User;
+
   private currentUser = new BehaviorSubject(this.user);
   private curUserObserver = this.currentUser.asObservable();
 

@@ -15,26 +15,33 @@ public class CreateUserComponent {
 	private WebDriver driver; 
 	private WebDriverWait wdw;
 	
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//input[@id='username']")
 	private WebElement usernameField;
 	
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//input[@id='Password']")
 	private WebElement passwordField;
 	
-	@FindBy(xpath = "")
-	private WebElement retypePasswordField;
 	
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//input[@id='Email']")
 	private WebElement emailField; 
 	
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//input[@id='firstName']")
 	private WebElement firstnameField;
 	
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//input[@id='lastName']")
 	private WebElement lastnameField;
 	
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//button[@id='submitBtn']")
 	private WebElement submitButton; 
+	
+	@FindBy(xpath = "//input[@id='userAge']")
+	private WebElement ageField;
+	
+	@FindBy(xpath = "//input[@id='phoneNumber']")
+	private WebElement phoneNumberField;
+	
+	@FindBy(xpath = "//p[@id='submitHelper']")
+	private WebElement submitHelper; 
 
 	
 	public CreateUserComponent(WebDriver driver) {
@@ -58,12 +65,6 @@ public class CreateUserComponent {
 		
 	}
 	
-	public String getRetypedPasswordText() {
-		
-		return this.wdw.until(ExpectedConditions.visibilityOf(retypePasswordField)).getText();
-		
-	}
-	
 	public String getEmailText() {
 		
 		return this.wdw.until(ExpectedConditions.visibilityOf(emailField)).getText();
@@ -79,6 +80,24 @@ public class CreateUserComponent {
 	public String getLastnameText() {
 		
 		return this.wdw.until(ExpectedConditions.visibilityOf(lastnameField)).getText();
+		
+	}
+	
+	public String getPhoneNumberText() {
+		
+		return this.wdw.until(ExpectedConditions.visibilityOf(phoneNumberField)).getText();
+		
+	}
+	
+	public String getAgeText() {
+		
+		return this.wdw.until(ExpectedConditions.visibilityOf(ageField)).getText();
+		
+	}
+	
+	public String getSubmitHelperText() {
+		
+		return this.wdw.until(ExpectedConditions.visibilityOf(submitHelper)).getText();
 		
 	}
 	
@@ -100,12 +119,7 @@ public class CreateUserComponent {
 		
 	}
 	
-	public void setRetypedPasswordField(String retypedPassword) {
-		
-		this.wdw.until(ExpectedConditions.visibilityOf(retypePasswordField)).sendKeys(retypedPassword);
-		
-	}
-	
+
 	public void setEmailField(String email) {
 		
 		this.wdw.until(ExpectedConditions.visibilityOf(emailField)).sendKeys(email);
@@ -124,10 +138,17 @@ public class CreateUserComponent {
 		
 	}
 	
+	public void setPhoneNumberField(String phoneNumber) {
+		
+		this.wdw.until(ExpectedConditions.visibilityOf(phoneNumberField)).sendKeys(phoneNumber);
+		
+	}
 	
-	
-	
-	
+	public void setAgeField(String age) {
+		
+		this.wdw.until(ExpectedConditions.visibilityOf(ageField)).sendKeys(age);
+		
+	}
 	
 	
 	

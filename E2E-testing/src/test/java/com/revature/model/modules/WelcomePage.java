@@ -5,12 +5,13 @@ import org.openqa.selenium.WebDriver;
 import com.revature.model.components.NavbarComponent;
 import com.revature.model.components.RecipeSummaryComponent;
 
-public class SearchResultModule {
+public class WelcomePage {
 
-	public NavbarComponent navbar;
-	public RecipeSummaryComponent recipeSummary;
 	
-	public SearchResultModule(WebDriver driver) {
+	public NavbarComponent navbar;
+	public RecipeSummaryComponent recipeSummary; 
+	
+	public WelcomePage(WebDriver driver) {
 		
 		this.navbar = new NavbarComponent(driver);
 		this.recipeSummary = new RecipeSummaryComponent(driver);

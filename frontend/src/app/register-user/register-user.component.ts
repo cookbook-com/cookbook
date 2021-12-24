@@ -3,6 +3,8 @@ import { User } from '../User';
 import { RegistrationService } from '../registration.service';
 import { EmailValidator } from '@angular/forms';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-user',
@@ -22,22 +24,19 @@ export class RegisterUserComponent implements OnInit {
     likedRecipe: '',
   };
 
-  constructor(private regService: RegistrationService) {}
+  constructor(
+    private regService: RegistrationService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
   submit(): void {
     console.log('new user is successful submitted');
-    this.newUser.username;
-    this.newUser.password;
-    this.newUser.firstName;
-    this.newUser.lastName;
-    this.newUser.phoneNumber;
-    this.newUser.email;
-    this.newUser.age;
-    this.newUser.likedRecipe;
 
-    
-    console.log(this.regService.submit(this.newUser));
+    this.regService.submit(this.newUser).subscribe((res) => {
+      console.log(res);
+    });
+    this.router.navigate(['login']);
   }
 }

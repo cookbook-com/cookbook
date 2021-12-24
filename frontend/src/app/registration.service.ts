@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './User';
 
@@ -12,6 +12,7 @@ export class RegistrationService {
 
   submit(newUser: User) {
     console.log(newUser);
+
     const requestBody = {
       username: newUser.username,
       password: newUser.password,
@@ -22,13 +23,9 @@ export class RegistrationService {
       age: newUser.age,
       likedRecipes: newUser.likedRecipe,
     };
-    const header = {
-      headers: new HttpHeaders({
-        ContentType: 'application/json',
-        responseType: 'text',
-        observe: 'response',
-      }),
-    };
-    return this.httpClient.post(this.url, requestBody, header);
+
+    return this.httpClient.post(this.url, requestBody, {
+      observe: 'response',
+    });
   }
 }

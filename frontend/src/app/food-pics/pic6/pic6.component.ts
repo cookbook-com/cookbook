@@ -12,7 +12,7 @@ export class Pic6Component implements OnInit {
   constructor(private foodServe: FoodPicService) { }
 
   ngOnInit(): void {
-    this.foodServe.getFoodById6(52794)
+    this.foodServe.getFoodById(52794)
     .subscribe(data => {
       console.log(data);
       this.data=data;

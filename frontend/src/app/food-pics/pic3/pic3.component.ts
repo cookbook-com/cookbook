@@ -11,7 +11,7 @@ export class Pic3Component implements OnInit {
   constructor(private foodServe: FoodPicService) { }
 
   ngOnInit(): void {
-    this.foodServe.getFoodById3(53063)
+    this.foodServe.getFoodById(53063)
     .subscribe(data => {
       console.log(data);
       this.data=data;

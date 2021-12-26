@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FoodPicService } from 'src/app/food-pic.service';
+import { Recipe } from 'src/app/Recipe';
 
 @Component({
   selector: 'app-pic3',
@@ -7,15 +8,24 @@ import { FoodPicService } from 'src/app/food-pic.service';
   styleUrls: ['./pic3.component.css']
 })
 export class Pic3Component implements OnInit {
-  data: any;
-  constructor(private foodServe: FoodPicService) { }
+  data: Recipe = { 
 
-  ngOnInit(): void {
-    this.foodServe.getFoodById(53063)
-    .subscribe(data => {
-      console.log(data);
-      this.data=data;
-    });
-  }
-
+    idMeal: 0,
+    strMeal: "",
+    strIngredients: new Array<string>(),
+    strInstructions: "",
+    strMealThumb: ""
+  
+  };
+  
+    constructor(private foodServe: FoodPicService) {
+      this.foodServe.getFoodById(53063).then(data => {
+        console.log(data);
+        this.data=data;
+      });
+     }
+    
+    ngOnInit(): void {
+     
+    }
 }

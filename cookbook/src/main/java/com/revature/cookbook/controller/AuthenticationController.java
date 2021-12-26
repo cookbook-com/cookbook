@@ -6,6 +6,8 @@ import javax.security.auth.login.LoginException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,6 +20,7 @@ import com.revature.cookbook.dto.LoginDTO;
 import com.revature.cookbook.model.User;
 import com.revature.cookbook.service.UserService;
 
+
 @RestController
 @CrossOrigin(originPatterns = "*", allowCredentials = "true")
 public class AuthenticationController {
@@ -27,6 +30,8 @@ public class AuthenticationController {
 	
 	@Autowired
 	private HttpServletRequest req;
+	
+	Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
 	
 	private static final String CURRENTUSER = "currentuser";
 
@@ -41,7 +46,7 @@ public class AuthenticationController {
 			HttpSession session = req.getSession();
 
 			session.setAttribute("currentuser", user);
-			
+			logger.info("User logged in: " + user);
 			return ResponseEntity.status(200).body(user);
 		}catch (LoginException e) {
 			return ResponseEntity.status(400).body(e.getMessage());
@@ -54,10 +59,12 @@ public class AuthenticationController {
 
 		
 		if (user != null) {
+			logger.info("Currently logged in user: " + user);
+			
 			return ResponseEntity.status(200).body(user);
 		}
 		
-		
+		logger.info("No currently logged in user");
 		return ResponseEntity.status(401).body("Not logged in");
 	}
 	
@@ -78,6 +85,7 @@ public class AuthenticationController {
 	public ResponseEntity<String> logout() {
 		req.getSession().invalidate(); 
 		
+		logger.info("User logged out");
 		return ResponseEntity.status(200).body("Successfully logged out");
 	}
 	

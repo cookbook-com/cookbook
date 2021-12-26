@@ -1,7 +1,9 @@
 input {
   width: 60%;
 }
-
+.flex {
+  display: flex;
+}
 .wrapper {
   height: 100%;
   width: 100%;
@@ -41,6 +43,16 @@ h2 {
   margin-left: 30%;
   margin-top: 20px;
 }
+.field2 {
+  margin-top: 15px;
+  margin-left: 30%;
+  width: 30%;
+}
+.field3 {
+  padding-top: 15px;
+  width: 40%;
+}
+
 .ageBtn {
   width: 80px;
 }

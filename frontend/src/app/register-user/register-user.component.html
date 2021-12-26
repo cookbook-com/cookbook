@@ -24,29 +24,31 @@
           [(ngModel)]="newUser.password"
         />
       </div>
-      <div class="field1">
-        <label class="label has-text-light is-size-4" id="firstName"
-          >First name</label
-        >
-        <input
-          type="text"
-          class="input is-primary"
-          placeholder="first name"
-          id="firstName"
-          is-size-4
-          [(ngModel)]="newUser.firstName"
-        />
-      </div>
-      <div class="field1">
-        <label class="label has-text-light is-size-4">Last name</label>
-        <input
-          type="text"
-          class="input is-primary"
-          placeholder="Last name"
-          id="lastName"
-          is-size-4
-          [(ngModel)]="newUser.lastName"
-        />
+      <div class="flex">
+        <div class="field2">
+          <label class="label has-text-light is-size-4" id="firstName"
+            >First name</label
+          >
+          <input
+            type="text"
+            class="input is-primary"
+            placeholder="first name"
+            id="firstName"
+            is-size-4
+            [(ngModel)]="newUser.firstName"
+          />
+        </div>
+        <div class="field3">
+          <label class="label has-text-light is-size-4">Last name</label>
+          <input
+            type="text"
+            class="input is-primary"
+            placeholder="Last name"
+            id="lastName"
+            is-size-4
+            [(ngModel)]="newUser.lastName"
+          />
+        </div>
       </div>
 
       <div class="field1">
@@ -93,7 +95,9 @@
         >
           Submit
         </button>
-        <p class = "help has-text-success" id ="submitHelper"> {{ errorMessage }}</p>
+        <p class="help has-text-success" id="submitHelper">
+          {{ errorMessage }}
+        </p>
         <button
           class="button is-normal is-size-4"
           id="cancelBtn"

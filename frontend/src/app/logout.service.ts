@@ -8,7 +8,7 @@ import { CurrentUserService } from './current.user.service';
   providedIn: 'root'
 })
 export class LogoutService {
-  private url: string = 'http://localhost:8080/logout';
+  private url: string = 'http://ec2-18-117-174-173.us-east-2.compute.amazonaws.com:8082/logout';
 
   constructor(
     private httpClient: HttpClient,

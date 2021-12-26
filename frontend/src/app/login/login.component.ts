@@ -19,17 +19,52 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  checkIfLoggedIn() {
+    this.loginService.checkingLoginStatus().subscribe(
+      (res) => {
+        if (res.status === 200) {
+          let body = <User>res.body;
+          this.router.navigate(['welcome']);
+        }
+      },
+      (err) => {}
+    );
+  }
   onButtonClick() {
+
+    console.log(this.username);
+    console.log(this.password);
+
+    if(this.username == undefined || this.username.length == 0 ) {
+
+      this.errorMessage = "Please enter a username";
+      return;
+
+    }
+
+    if(this.password == undefined || this.password.length == 0 ) {
+
+      this.errorMessage = "Please enter a password";
+      return; 
+
+    }
+
+
+
     this.loginService.login(this.username, this.password).subscribe(
       (res) => {
         if (res.status === 200) {
           let body = <User>res.body;
 
-          this.router.navigate([WelcomeComponent]); //Should be redirected to the WelcomeComponent
+          this.router.navigate(['welcome']);
         }
+
+        
       },
       (err) => {
-        this.errorMessage = err.console.error;
+
+        this.errorMessage = err.error;
+        console.log(err.error);
       }
     );
   }

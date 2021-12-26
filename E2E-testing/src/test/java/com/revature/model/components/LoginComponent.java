@@ -15,14 +15,17 @@ public class LoginComponent {
 	private WebDriver driver; 
 	private WebDriverWait wdw; 
 	
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//input[@id='username']")
 	private WebElement usernameField;
 	
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//input[@id='pwd']")
 	private WebElement passwordField; 
 	
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//button[contains(text(),'Login')]")
 	private WebElement submitButton;
+	
+	@FindBy(xpath = "//div[@id='error-message']")
+	private WebElement submitHelper; 
 	
 	public LoginComponent(WebDriver driver) {
 		
@@ -42,6 +45,12 @@ public class LoginComponent {
 	public String getPasswordText() {
 		
 		return wdw.until(ExpectedConditions.visibilityOf(passwordField)).getText();
+		
+	}
+	
+	public String getSubmitHelperText() {
+		
+		return wdw.until(ExpectedConditions.visibilityOf(submitHelper)).getText();
 		
 	}
 	

@@ -14,7 +14,7 @@ public class RecipeDetailedComponent {
 	private WebDriver driver;
 	private WebDriverWait wdw;
 	 
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//body[1]/app-root[1]/app-random-recipe[1]/div[1]/div[1]/h1[1]")
 	private WebElement titleElement;
 	
 	@FindBy(xpath = "")

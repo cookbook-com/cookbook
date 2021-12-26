@@ -22,9 +22,16 @@ public class CookbookService {
 	@Autowired
 	private UserDao userDao; 
 	
+	
 	private Logger logger = LoggerFactory.getLogger(CookbookService.class);
+	
+	public CookbookService() {
+		
+		
+		
+	}
 
-	public Cookbook createNewCookbook(Cookbook newCookbook, int userId) throws Exception{
+	public Cookbook createNewCookbook(Cookbook newCookbook, int userId) throws IllegalArgumentException, Exception{
 		
 		//check to see user we are trying to create a cookbook for actually exists; 
 		

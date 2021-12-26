@@ -5,16 +5,14 @@ import org.openqa.selenium.WebDriver;
 import com.revature.model.components.CreateUserComponent;
 import com.revature.model.components.LoginComponent;
 
-public class LoginModule {
+public class LoginPage {
 
 	public LoginComponent login;
-	public CreateUserComponent createUser; 
 	
 	
-	public LoginModule(WebDriver driver) {
+	public LoginPage(WebDriver driver) {
 		
 		this.login = new LoginComponent(driver);
-		this.createUser = new CreateUserComponent(driver);
 		
 	}
 	

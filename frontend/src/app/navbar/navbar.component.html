@@ -1,87 +1,96 @@
 <div id="profile">
-    <!-- overall potential reference https://angular.io/guide/http 
+  <!-- overall potential reference https://angular.io/guide/http 
     https://angular.io/tutorial/toh-pt6#heroes-and-http  -->
-    <img id="user-profile-picture" [src] = ""> <!--userImageLink-->
-     <!-- For later https://stackoverflow.com/questions/56863495/how-to-display-image-in-angular-->
-    <p id="profile-username">Bob Ross</p>
-    <div class="profile-box">
-        <!-- navigates to user profile component/ or cookbook summary-->
-        <a routerLink="/welcome">User profile</a>
-        <!-- navigates to login page, if not logged in, if they are then it will say sign out-->
-        <a routerLink="/login">Sign in</a>
-        <!-- reference this https://stackoverflow.com/questions/34852627/how-to-change-the-logout-button-to-login-in-angular-->
-        <!-- <button *ngi="loggedInToggle" (click)="signOut()">Sign <output></output></button> -->
-        <a routerLink="/register">Sign up</a>
-
-    </div>
-    <!-- Search reference https://medium.com/@uditgogoi1/search-bar-with-autocomplete-using-angular-5-and-angular-material-c5a77a429da7 -->
-    <!-- Search reference https://dev.to/sandeepbalachandran/how-to-filter-the-data-with-a-common-search-bar-at-the-top-angular-8-16a -->
-    <!-- option 3 https://stackoverflow.com/questions/55373526/angular-7-search-bar-and-results-in-different-views -->
-    <!-- option 4 https://stackblitz.com/edit/angular-search-box -->
-    <a routerLink="/welcome">Home</a>  <!-- routerlink set to /welcome matches the route to HeroesComponent, 
+  <img id="user-profile-picture" [src]="" />
+  <!--userImageLink-->
+  <!-- For later https://stackoverflow.com/questions/56863495/how-to-display-image-in-angular-->
+  <p id="profile-username">Bob Ross</p>
+  <div class="profile-box">
+    <!-- navigates to user profile component/ or cookbook summary-->
+    <a routerLink="/userprofile" class="profile">User profile</a>
+    <!-- navigates to login page, if not logged in, if they are then it will say sign out-->
+    <!-- <button *ngIf="loggedInTrue" (click)="signIn()" routerLink="/login">Sign in</button> -->
+    <a *ngIf="loggedInTrue" (click)="signIn()" routerLink="/login" class="login"
+      >Sign in</a
+    >
+    <a
+      *ngIf="loggedInFalse"
+      (click)="signOut()"
+      routerLink="/welcome"
+      class="singout"
+      >Sign out</a
+    >
+    <a routerLink="/register">Sign up</a>
+  </div>
+  <!-- option 3 https://stackoverflow.com/questions/55373526/angular-7-search-bar-and-results-in-different-views -->
+  <a routerLink="/welcome">Home</a>
+  <!-- routerlink set to /welcome matches the route to HeroesComponent, 
         routerLink is the selector for the RouterLink directive that turns user clicks into router navigations-->
-   
-    <!-- section to use filters-->   
-    <div id="search-recipe">
-        <!-- button to open filter options-->
-        <button id="filter-button" (click)="toggleFilters()">Filters</button>
-        <button id="random-recipe" routerLink="/randomrecipe">Surprise me!</button>
-     <!-- will display a list of recipes names based on what is currently being in the search box-->
-    
-        <!-- section for search bar-->
-        <!-- might be useful: https://stackblitz.com/edit/simple-search-filter Just need to find a way to call the api search by ingredient-->
-        <!-- other references: https://stackblitz.com/edit/angular-simple-search
-            https://stackblitz.com/edit/angular-multiple-search-filters  
+
+  <!-- section to use filters-->
+  <div id="search-recipe">
+    <!-- this should give an example https://stackblitz.com/edit/ng-search-filter -->
+    <select name="Filters" (change)="filterState()" id="filter-drop-down">
+      <option value="name">Name</option>
+      <option value="ingredient">Ingredient</option>
+      <option value="category">Category</option>
+      <option value="area">Area</option>
+    </select>
+
+    <!-- will display a list of recipes names based on what is currently being in the search box-->
+
+    <!-- section for search bar-->
+    <!-- might be useful: https://stackblitz.com/edit/simple-search-filter Just need to find a way to call the api search by ingredient-->
+    <!-- other references:
+            
+            to make search show results changing dynamically
+            https://www.npmjs.com/package/ng2-nested-search
+            https://stackblitz.com/edit/search-filter-ng2   
         
         -->
-       
-             <!--I believe it should match the value in the recipe interface-->
-            
-        <!-- info on two-way databinding https://angular.io/guide/two-way-binding-->
-        <div class= "columns is -multiline" *ngIf="recipes$">
-            <div class="column is-4" *ngFor="let recipe of recipes$ |async">
-                <div class="card">
-                    <div class="card-content">
-                        {{recipe.strMeal}}
-                    </div>
-                </div>
-                
-            </div>
-            
+    <input
+      #searchBox
+      id="search-box"
+      placeholder="Search recipe here"
+      (input)="search(searchBox.value)"
+    />
+    <!-- # is a template variable, https://angular.io/guide/template-reference-variables -->
+    <!-- Will need to pass value from searchbox to recipe summary-->
+    <button id="search-btn" routerLink="/recipesummary">Search recipe</button>
+    <!-- <button id="search-btn" (click)="search(searchBox.value)">Search recipe</button> -->
+    <!-- info on two-way databinding https://angular.io/guide/two-way-binding-->
+    <ul class="search-result">
+      <li *ngFor="let recipe of recipes$ | async">
+        <a routerLink="/recipedetailed/{{ recipe.idMeal }}">
+          {{ recipe.strMeal }}
+          <!--I believe it should match the value in the recipe interface-->
+        </a>
+      </li>
+    </ul>
+    <button id="random-recipe" routerLink="/randomrecipe">Surprise me!</button>
+
+    <!--I believe it should match the value in the recipe interface-->
+
+    <!-- info on two-way databinding https://angular.io/guide/two-way-binding-->
+    <div class="columns is -multiline" *ngIf="recipes$">
+      <div class="column is-4" *ngFor="let recipe of recipes$ | async">
+        <div class="card">
+          <div class="card-content">
+            {{ recipe.strMeal }}
+          </div>
         </div>
-        <!-- <div>
+      </div>
+    </div>
+  </div>
+  <!-- <div>
             <input type="text"name="foodName" placeholder="Enter Food "class="food-input"[(ngModel)]="inputFood"/>
             <button id="food-btn" (click)="search(inputFood.value)" routerLink="">Search by Name</button>
         </div> -->
-          
-    <!-- section for logo-->
-        <div>
-            <!--Don't think I need name for the website as the logo should be enough-->
-            <img id="cookbook-logo" [src]=""> <!--logoImageLink-->
-        </div>
-    </div>
-</div>
-<!--
-<div id="mySideNav" class="sideNav" *ngIf="filterOnToggle">
-    References: https://stackblitz.com/edit/angular-side-nav-dynamic-expansive-menu
-    https://stackblitz.com/edit/basic-layout-sidenav?file=src%2Fapp%2Fapp.component.html 
-    https://stackblitz.com/edit/angular-material-sidenav-dock?file=src%2Fapp%2Fsidenav-open-close-example.html 
 
-    -- close side nav button--
-    <button id="side-nav-button" (click)="toggleFilters()">x</button>
-    
-    -- section for search by ingredient--
-    <p id="filterP">Filter by:</p>
-    <a href="#" id="filterIng">Filter by ingredient: </a>
-    -- search like searching regular recipe goes here, WIP--
-        <input #filterIngredientsBox id="ingredient-Search" (input)="searchIngredient(filterIngredientsBox.value)">
-        <ul class="filter-result">
-            <li *ngFor="let ingredient of recipes$ | async">
-                <a routerLink="/recipedetiled/{{ingredient.idMeal}}">
-                    {{ingredient.strIngredients}}
-                </a>   
-            </li>
-        </ul>
+  <!-- section for logo-->
+  <div>
+    <!--Don't think I need name for the website as the logo should be enough-->
+    <img id="cookbook-logo" [src]="" />
+    <!--logoImageLink-->
+  </div>
 </div>
--->
-

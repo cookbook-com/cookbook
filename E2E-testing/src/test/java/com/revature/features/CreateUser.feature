@@ -8,7 +8,7 @@ Scenario: Creating new user successfully (positive test)
 	And I enter in a lastname
 	And I enter in an email
 	And I click the submit button
-	Then I should see a message telling me that the user has successfully been created
+	Then I should be taken to the login page
 	
 Scenario: Creating new user without firstname (positive test)
 	Given I am at the create user page
@@ -17,7 +17,7 @@ Scenario: Creating new user without firstname (positive test)
 	And I enter in a lastname
 	And I enter in an email
 	And I click the submit button
-	Then I should see a message telling me that the user has successfully been created
+	Then I should be taken to the login page
 	
 Scenario: Creating new user without lastname (positive test)
 	Given I am at the create user page
@@ -26,7 +26,7 @@ Scenario: Creating new user without lastname (positive test)
 	And I enter in a firstname
 	And I enter in an email
 	And I click the submit button
-	Then I should see a message telling me that the user has successfully been created
+	Then I should be taken to the login page
 	
 Scenario: Forgetting username (negative test)
 	Given I am at the create user page
@@ -45,17 +45,7 @@ Scenario: Forgetting password (negative test)
 	And I enter in an email
 	And I click the submit button
 	Then I should see a message saying that the user cannot be created because password is blank
-	
-Scenario: Retyped password doesnt match (negative test)
-	Given I am at the create user page
-	When I enter in a username
-	And I enter in a password but leave retyped password blank
-	And I enter in a firstname
-	And I enter in a lastname
-	And I enter in an email
-	And I click the submit button
-	Then I should see a message saying that the user cannot be created because retyped password doesnt match
-	
+		
 Scenario: Forgetting email (negative test)
 	Given I am at the create user page
 	When I enter in a username

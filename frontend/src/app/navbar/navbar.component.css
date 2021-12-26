@@ -1,1 +1,13 @@
-@import 'bulma/css/bulma.css';
+/* @import "bulma/css/bulma.css"; */
+
+.profile {
+  padding-right: 20px;
+}
+
+.login {
+  padding-right: 20px;
+}
+
+.singout {
+  padding-right: 20px;
+}

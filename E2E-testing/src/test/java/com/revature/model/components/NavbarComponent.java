@@ -23,19 +23,22 @@ public class NavbarComponent {
 	@FindBy(xpath = "")
 	private WebElement searchButton; 
 	
-	@FindBy(xpath = "")
-	private WebElement logoHomeButton;
+	@FindBy(xpath = "//a[contains(text(),'Home')]")
+	private WebElement homeButton;
 	
 	@FindBy(xpath = "")
 	private WebElement navigationMenuDropdown;
 	
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//a[contains(text(),'User profile')]")
 	private WebElement profileLink;
 	
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//a[contains(text(),'Sign in')]")
 	private WebElement signinLink;
 	
-	@FindBy(xpath = "")
+	@FindBy(xpath = "//a[contains(text(),'Sign up')]")
+	private WebElement signupLink;
+	
+	@FindBy(xpath = "//a[contains(text(),'Sign out')]")
 	private WebElement signoutLink;
 	
 	@FindBy(xpath = "")
@@ -49,6 +52,9 @@ public class NavbarComponent {
 	
 	@FindBy(xpath = "")
 	private WebElement tagsDropdown;
+	
+	@FindBy(xpath = "//button[@id='random-recipe']")
+	private WebElement randomRecipeButton;
 	
 	//Need to add other webelements for any links that are under these filter dropdowns
 	
@@ -77,7 +83,7 @@ public class NavbarComponent {
 	
 	public void clickHome() {
 		
-		wdw.until(ExpectedConditions.visibilityOf(logoHomeButton)).click();
+		wdw.until(ExpectedConditions.visibilityOf(homeButton)).click();
 		
 	}
 	
@@ -141,6 +147,18 @@ public class NavbarComponent {
 	public void setSearchField(String query) {
 		
 		this.wdw.until(ExpectedConditions.visibilityOf(searchField)).sendKeys(query);
+		
+	}
+	
+	public void clickRandomRecipe() {
+		
+		this.wdw.until(ExpectedConditions.elementToBeClickable(randomRecipeButton)).click();
+		
+	}
+	
+	public void clickSignup() {
+		
+		this.wdw.until(ExpectedConditions.elementToBeClickable(signupLink)).click();
 		
 	}
 	

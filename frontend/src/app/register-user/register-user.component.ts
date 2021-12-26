@@ -24,6 +24,8 @@ export class RegisterUserComponent implements OnInit {
     likedRecipe: '',
   };
 
+  errorMessage!: string; 
+
   constructor(
     private regService: RegistrationService,
     private router: Router
@@ -32,12 +34,40 @@ export class RegisterUserComponent implements OnInit {
   ngOnInit(): void {}
 
   submit(): void {
-    console.log('new user is successful submitted');
+    
+
+    if(this.newUser.username.length == 0) {
+
+      this.errorMessage = "Please enter a username";
+      return; 
+
+    }
+
+    if(this.newUser.password.length == 0) {
+
+      this.errorMessage = "Please enter a password";
+      return;
+
+    }
+
+    if(this.newUser.email.length == 0) {
+
+      this.errorMessage = "Please enter an email";
+      return;
+
+    }
 
     this.regService.submit(this.newUser).subscribe((res) => {
       console.log(res);
+      this.router.navigate(['login']);
+
+    },
+    (err) => {
+
+      this.errorMessage = err.error;
+      console.log(err);
+
     });
-    this.router.navigate(['login']);
   }
 
   cancel(): void {

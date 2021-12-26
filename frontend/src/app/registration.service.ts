@@ -6,7 +6,7 @@ import { User } from './User';
   providedIn: 'root',
 })
 export class RegistrationService {
-  private url: string = 'http://localhost:8080/users';
+  private url: string = 'http://localhost:8082/users';
 
   constructor(private httpClient: HttpClient) {}
 

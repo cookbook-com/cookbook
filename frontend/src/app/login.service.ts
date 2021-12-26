@@ -9,7 +9,7 @@ export class LoginService {
 
   login(username: string, password: string) {
     return this.http.post(
-      'http://localhost:8080/login',
+      'http://localhost:8082/login',
       {
         username: username,
         password: password,
@@ -22,7 +22,7 @@ export class LoginService {
   }
 
   checkingLoginStatus() {
-    return this.http.get('http://localhost:8080/loginstatus', {
+    return this.http.get('http://localhost:8082/loginstatus', {
       observe: 'response',
       withCredentials: true,
     });
@@ -30,7 +30,7 @@ export class LoginService {
 
   logout() {
     return this.http.post(
-      'http://localhost:8080/logout',
+      'http://localhost:8082/logout',
       {},
       {
         observe: 'response',

@@ -30,7 +30,7 @@ export class CurrentUserService {
 
   async getLoggedUser(): Promise<User> {
     
-    let res = await fetch('http://localhost:8082/currentuser', {
+    let res = await fetch('http://ec2-18-117-174-173.us-east-2.compute.amazonaws.com:8082/currentuser', {
 
       method: 'GET',
       credentials: 'include'

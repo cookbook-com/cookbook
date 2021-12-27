@@ -18,25 +18,25 @@
         <div class="row mt-2 n-flex">
           <div class="col-md-6">
             <label class="labels">First Name</label
-            ><input type="text" class="form-control fstName" />
+            ><input type="text" class="form-control fstName" [value] = "currentUser.firstName"/>
           </div>
           <div class="col-md-6">
             <label class="labels">Last Name</label
-            ><input type="text" class="form-control" />
+            ><input type="text" class="form-control" [value] = "currentUser.lastName"/>
           </div>
         </div>
         <div class="row mt-3">
           <div class="col-md-12">
             <label class="labels">Mobile Number</label
-            ><input type="text" class="form-control pflex" />
+            ><input type="text" class="form-control pflex" [value] = "currentUser.phoneNumber"/>
           </div>
           <div class="col-md-12">
             <label class="labels">Email</label
-            ><input type="text" class="form-control pflex" />
+            ><input type="text" class="form-control pflex" [value] = "currentUser.email"/>
           </div>
           <div class="col-md-12">
             <label class="labels">Age</label
-            ><input type="text" class="form-control" />
+            ><input type="text" class="form-control" [value] = "currentUser.age"/>
           </div>
         </div>
       </div>

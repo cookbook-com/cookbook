@@ -26,10 +26,20 @@ export class CurrentUserService {
     return this.curUserObserver;
   }
 
-  getLoggedUser() {
-    return this.http.get('http://localhost:8080/login', {
-      withCredentials: true,
-      observe: 'response',
+  
+
+  async getLoggedUser(): Promise<User> {
+    
+    let res = await fetch('http://localhost:8082/currentuser', {
+
+      method: 'GET',
+      credentials: 'include'
+
     });
+
+    let data = await res.json();
+
+    return data; 
+
   }
 }

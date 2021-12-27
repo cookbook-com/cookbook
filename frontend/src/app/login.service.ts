@@ -9,7 +9,7 @@ export class LoginService {
 
   login(username: string, password: string) {
     return this.http.post(
-      'http://ec2-18-117-174-173.us-east-2.compute.amazonaws.com:8082/login',
+      'http://localhost:8082/login',
       {
         username: username,
         password: password,

@@ -31,6 +31,18 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.currentUserService.getUser().subscribe();
+    
+    this.getLoggedUser();
+
   }
+
+  async getLoggedUser() {
+
+    let data = await this.currentUserService.getLoggedUser();
+    this.currentUser = data; 
+    console.log(this.currentUser);
+
+
+  }
+
 }

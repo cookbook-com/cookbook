@@ -11,15 +11,54 @@ import { Recipe } from './Recipe';
 })
 export class RecipeService {
   /* GET recipe whose name contains search terms*/
-  searchRecipes(term: string): Observable<Recipe[]> { // used to say searchHeroes
+  searchRecipes(term: string) { // used to say searchHeroes
     if (!term.trim()) {
       // if not search term, return empty hero array.
       return of([]);
     }
-    return this.http.get<Recipe[]>(`${this.recipeUrl}/search.php?s=${term}`);
+    console.log(`${this.recipeUrl}/search.php?s=${term}`);
+    return this.http.get<Recipe>(`${this.recipeUrl}/search.php?s=${term}`).subscribe((data) => {this.recipeName$.next(data)});
+    
     // The method returns immediately with an empty array if there is no search term.
   }
+  // search by ingredient, not connected to Navbar fully
+  searchIngredientRecipes(term: string) { // used to say searchHeroes
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    console.log(`${this.recipeUrl}/filter.php?i=${term}`);
+    return this.http.get<Recipe>(`${this.recipeUrl}/filter.php?i=${term}`).subscribe((data) => {this.recipeName$.next(data)});
+    
+    // The method returns immediately with an empty array if there is no search term.
 
+  }
+  // search by category, not connected to Navbar fully
+  searchCategoryRecipes(term: string) { // used to say searchHeroes
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    console.log(`${this.recipeUrl}/filter.php?c=${term}`);
+    return this.http.get<Recipe>(`${this.recipeUrl}/filter.php?c=${term}`).subscribe((data) => {this.recipeName$.next(data)});
+    
+    // The method returns immediately with an empty array if there is no search term.
+
+  }
+  // search by area, not connected to Navbar fully
+  searchAreaRecipes(term: string) { // used to say searchHeroes
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    console.log(`${this.recipeUrl}/filter.php?a==${term}`);
+    return this.http.get<Recipe>(`${this.recipeUrl}/filter.php?a==${term}`).subscribe((data) => {this.recipeName$.next(data)});
+    
+    // The method returns immediately with an empty array if there is no search term.
+
+  }
+
+  recipeName$: Subject<Recipe> = new Subject();
   recipeIdDetailed$: Subject<number> = new Subject();
   // client!: HttpClient; // Might not be needed as the constructor includes, private http: HttpClient - Raf
 

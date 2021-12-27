@@ -1,6 +1,5 @@
-
-#profile{
-  padding: .5rem;
+#profile {
+  padding: 0.5rem;
   margin: auto;
   max-width: auto;
   max-height: 75px;
@@ -13,54 +12,51 @@
   align-content: flex-start;
   align-items: flex-start;
 }
-#profile-username{
+#profile-username {
   display: block;
   color: #8bff76;
-  padding: .5rem;
+  padding: 0.5rem;
   box-sizing: border-box;
   text-align: center;
 }
 #profile-box {
   padding-right: 20px;
   background-color: #8bff76;
-  padding: .5rem;
+  padding: 0.5rem;
   text-decoration: none;
   display: inline-block;
   text-align: center;
-  width: 10%;
+  width: 15%;
   min-width: 10px;
-  margin: .5rem auto;
+  margin: 0.5rem auto;
   box-sizing: border-box;
-  
 }
 
-#profile-box a:hover{
+#profile-box a:hover {
   background-color: #ff8781;
   color: #f0eff4;
   text-decoration: none;
   display: inline-block;
   text-align: center;
-
-} 
-#search-recipe{
-  padding: .5rem;
+}
+#search-recipe {
+  padding: 0.5rem;
 }
 
-@media (min-width: 600px){
-  a{
-      width: 18%; /* changes how much space the top 4 heroes take place*/
-      box-sizing: content-box;
+@media (min-width: 600px) {
+  a {
+    width: 18%; /* changes how much space the top 4 heroes take place*/
+    box-sizing: content-box;
   }
 }
 
-
-img{
+img {
   background-color: #f0eff4;
   border-radius: 40px;
 }
 
-#search-box{
-  padding: .5rem; /* padding for search box*/
+#search-box {
+  padding: 0.5rem; /* padding for search box*/
   width: 100%;
   max-width: 1000px; /* sets max width of search box*/
   box-sizing: border-box;
@@ -83,7 +79,7 @@ li {
   display: inline-block;
   width: 100%; /* affects the width of search box result*/
   max-width: 600px;
-  padding: .5rem;
+  padding: 0.5rem;
   box-sizing: border-box;
   text-decoration: none;
   color: black;
@@ -98,3 +94,15 @@ ul#search-result {
   padding-left: 0;
 }
 
+.profile {
+  margin-right: 10px;
+}
+
+.login {
+  margin-right: 10px;
+}
+
+.home {
+  margin-left: 25px;
+  margin-top: 5px;
+}

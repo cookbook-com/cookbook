@@ -4,7 +4,7 @@
 
   <div class = "column is-full has-text-centered" style = "background-color: #8BFF76;">
 
-    <h1 class = "title is-1"> {{ recipeToBeDisplayed.strMeal }}</h1>
+    <h1 class = "title is-1" style="font-family: Georgia, 'Times New Roman', Times, serif;"> {{ recipeToBeDisplayed.strMeal }}</h1>
 
   </div>
 
@@ -16,9 +16,9 @@
 
   <div class = "column is-two-thirds has-text-centered" style = "background-color: #FF8781">
 
-    <h1 class="title is-2">recipe info panel</h1>
+    <h1 class="title is-2"style="font-family: Georgia, 'Times New Roman', Times, serif;">recipe info panel</h1>
 
-    <div class = "columns is-multiline">
+    <div class = "columns is-multiline ">
 
       <div class = "column is-half">
 
@@ -32,17 +32,18 @@
 
       </div>
 
-      <div class =  "column is-full">
-
-        <h1 class = "subtitle is-3">Ingredients</h1>
+     
+      <div class =  "column is-full ">
+      
+        <h1 class = "subtitle is-3 " style= "font-family: Georgia, 'Times New Roman', Times, serif;">Ingredients</h1>
 
         <ol>
           <li *ngFor = "let ingredient of ingredients"> {{ ingredient }}</li>
         </ol>
 
 
-      </div>
-
+     
+    </div>
     </div>
 
 

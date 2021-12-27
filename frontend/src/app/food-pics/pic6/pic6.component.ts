@@ -8,13 +8,8 @@ import { Recipe } from 'src/app/Recipe';
   styleUrls: ['./pic6.component.css']
 })
 export class Pic6Component implements OnInit {
-<<<<<<< HEAD
 
   data: Recipe = { 
-=======
-  data: any;
-  constructor(private foodServe: FoodPicService) { }
->>>>>>> 88c236788308eb2c3b107fb353ce2d3fcbf9f4e1
 
     idMeal: 0,
     strMeal: "",
